@@ -1,0 +1,405 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Add Payment </title>
+   
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    <!-- Styles -->
+
+    <link href="{% static 'CSS/css/lib/chartist/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/data-table/buttons.bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'CSS/css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/owl.carousel.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'CSS/css/lib/owl.theme.default.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'CSS/css/lib/menubar/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/helper.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/style.css' %}" rel="stylesheet">
+
+    
+    <style>
+      label {
+          width: 200px;
+          display: inline-block;
+      }
+
+      header {
+          display: flex;
+          border-bottom: 2px solid gray;
+          padding: 10px 0px 10px 30px;
+          background: #f0f0f0;
+          margin: -20px;
+      }
+
+      input {
+          padding: 5px;
+          border: 1px solid gray;
+          border-radius: 5px;
+      }
+
+      #size {
+          width: 50vw;
+      }
+
+      #size2 {
+          width: 16vw;
+      }
+
+      textarea {
+          width: 50vw;
+          vertical-align: center;
+      }
+
+      #disabled,
+      #currentTime {
+          cursor: not-allowed;
+          background-color: #e6e6e6;
+      }
+
+      footer {
+          display: flex;
+          justify-content: center;
+          padding: 10px;
+          border-top: 2px solid gray;
+          background-color: #f0f0f0;
+          margin: -20px;
+      }
+  </style>
+
+</head>
+
+<body>
+
+  
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <div class="logo"><a href="#"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Mahalaxmi Real Estate</span></a></div>
+                <ul>
+                    <li class="label"></li>
+                    <br>
+                    <br>
+                    <li><a  href="{% url 'dashboard' %}"><i class="ti-home"></i>Dashboard</a>
+                    </li>
+
+                    <li class="label"></li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Clients<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'add_client' %}">Add Client</a></li>
+                            <li><a href="{% url 'list_clients' %}">List Clients</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-view-list-alt"></i>Agents<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'add_agent' %}">Add Agent</a></li>
+                            <li><a href="{% url 'list_agents' %}">Agents List</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i>Projects<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'view_project' %}">View All Projects</a></li>
+                            <li><a href="{% url 'add_project' %}">Add Project</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i>Properties<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'list_properties' %}">View All Properties</a></li>
+                            <li><a href="{% url 'add_properties' %}">Add New Property</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i>Leads<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'fresh_leads' %}">Fresh Leads</a></li>
+                            <li><a href="{% url 'add_new_leads' %}">Add New Lead</a></li>
+                            <li><a href="{% url 'upcoming_followups' %}">Up-Coming Follow-up's</a></li>
+                            <li><a href="{% url 'todays_followups' %}">Today's Follow-up's</a></li>
+                            <li><a href="{% url 'old_followups' %}">Old Pending Follow-up's</a></li>
+                            <li><a href="{% url 'all_leads' %}">All Leads</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-layout-grid4-alt"></i>Search Leads</a>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-bell"></i>Payments<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'view_payment' %}">View Payment History</a></li>
+                            <li><a href="{% url 'add_payment' %}">Add New Payment</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-files"></i>Agreements<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'view_agreement' %}">View Agreement History</a></li>
+                            <li><a href="{% url 'add_agreement' %}">Add New Agreement</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i>Masters<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'masters_add_source' %}">Add Source</a></li>
+                            <li><a href="{% url 'masters_add_property_type' %}">Master - Add Property Type</a></li>
+                            <li><a href="{% url 'masters_add_amenities' %}">Master - Add Amenities</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-settings"></i>Settings<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'add_user' %}">New User</a></li>
+                            <li><a href="{% url 'password' %}">Change Password</a></li>
+                            <li><a href="{% url 'history' %}">User's List & Last Login</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{% url 'supports' %}" class="ti-target"></i>Support</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        
+                        
+                        
+                            <div class="header-icon">
+                                <a href="{% url 'home' %}"><i class="ti-home"></i></a>
+                            </div>    
+                    
+
+
+
+                        <div class="dropdown dib">
+                            <div class="header-icon" data-toggle="dropdown">
+                                <span class="user-avatar">User_name 
+                                    <i class="ti-angle-down f-s-10"></i>
+                                </span>
+                                <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-user"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-email"></i>
+                                                    <span>Inbox</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-settings"></i>
+                                                    <span>Setting</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'user_login' %}">
+                                                    <i class="ti-power-off"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  <div class="content-wrap">
+      <div class="main">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-lg-8 p-r-0 title-margin-right">
+                      <div class="page-header">
+                          <div class="page-title">
+                              <h1>Add Payment</h1>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /# column -->
+                  <div class="col-lg-4 p-l-0 title-margin-left">
+                      <div class="page-header">
+                          <div class="page-title">
+                              <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                  <li class="breadcrumb-item active">Add Payment</li>
+                              </ol>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /# column -->
+              </div>
+              <!-- /# row -->
+              <section id="main-content">
+                  <div class="row">
+                      <div class="col-lg-12">
+
+                          <div class="card">
+                              <div class="card-body">
+
+                                  <header>
+                                      <h1>
+                                          Add Payment
+                                      </h1>
+                                  </header> <br><br>
+
+                                  <div class="form-validation">
+
+                                      <form class="form-valide" action="{% url 'add_payment' %}" method="post" enctype="multipart/form-data">
+                                         {% csrf_token %} 
+                                          <div class="form-group row">
+                                              <label>Client Name </label>
+                                              <input id="size" type="text" name="client_name" placeholder="Enter Client Name">
+                                          </div>
+                                          <br>
+                                          <div class="form-group row">
+
+                                              <div class="proj_loc">
+                                                  <label>Email </label>
+                                                  <input id="size2" type="email" name="email" placeholder="Enter Email Id">
+                                              </div>
+                                              &emsp;&emsp;
+
+                                              <div class="proj_area">
+                                                  <label>Phone Number</label>
+                                                  <input id="size2" type="text" name="phone_no" placeholder="Enter Phone Number">
+                                              </div>
+                                          </div>
+
+                                          <br>
+                                          <div class="form-group row">
+                                              <div class="proj_loc">
+                                              <label> Property Name </label>
+                                              <input type="text" name="property_name"  placeholder="Enter Property Name">
+                                              </div>
+                                              &emsp;&emsp;
+                                              <div class="proj_area">
+                                                <label> Project Name </label>
+                                                <input type="text" name="proj_name"  placeholder="Enter Project Name">
+                                            </div>
+                                          </div>
+
+                                          <br>
+                                          <div class="form-group row">
+                                              <label> Payment Mode </label>
+                                              <select>
+                                                  <option>Online </option>
+                                                  <option>Offline </option>
+                                              </select>
+                                              <br>
+                                          </div>
+
+                                          <br>
+                                          <div class="form-group row">
+ 
+                                              <div class="user">
+                                                  <label id="user"> Payment Id</label>
+                                                  <input  type="text" name="pay_id" 
+                                                      placeholder="Enter Payment Id " >
+                                              </div>
+
+                                              &emsp;&emsp;&emsp;
+                                              <div class="time">
+                                                  <label id="time">Payment Date</label>
+                                                  <input type="date" name ="pay_date" id="currentTime" >
+                                              </div>
+                                              <br><br>
+                                          </div>
+
+                                          <script>
+                                              const time = new Date().toLocaleString();
+                                              document.getElementById("currentTime").value = time;
+                                          </script>
+
+                                          <br>
+
+                                          <footer>
+                                              <div class="form-group row">
+                                                  <div>
+                                                      <!--<button type="submit" class="btn btn-success">Pay</button>-->
+
+                                                      <button type="submit" class="btn btn-primary">Submit</button>
+
+                                                      <button type="reset" class="btn btn-secondary">Reset</button>
+                                                  </div>
+                                              </div>
+                                          </footer>
+
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="footer">
+                              <p>2022 © Admin Board. - <a href="#">example.com</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+          </div>
+      </div>
+  </div>
+
+
+
+  <!-- jquery vendor -->
+  <script src="{% static 'JS/js/lib/jquery.min.js' %}"></script>
+  <script src="{% static 'JS/js/lib/jquery.nanoscroller.min.js' %}"></script>
+  <!-- nano scroller -->
+  <script src="{% static 'JS/js/lib/menubar/sidebar.js' %}"></script>
+  <script src="{% static 'JS/js/lib/preloader/pace.min.js' %}"></script>
+  <!-- sidebar -->
+
+  <!-- bootstrap -->
+
+
+  <script src="{% static 'JS/js/lib/bootstrap.min.js' %}"></script>
+  <script src="{% static 'JS/js/scripts.js' %}"></script>
+  <!-- scripit init-->
+</body>
+
+</html>

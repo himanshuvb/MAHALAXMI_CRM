@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/leads.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Fresh Leads</title>
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    <!-- Styles -->
+    <link href="{% static 'CSS/css/lib/select2/select2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/menubar/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/helper.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/style.css' %}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+  
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <div class="logo"><a href="#"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Mahalaxmi Real Estate</span></a></div>
+                <ul>
+                    <li class="label"></li>
+                    <br>
+                    <br>
+                    <li><a  href="{% url 'dashboard' %}"><i class="ti-home"></i>Dashboard</a>
+                    </li>
+
+                    <li class="label"></li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Clients<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'add_client' %}">Add Client</a></li>
+                            <li><a href="{% url 'list_clients' %}">List Clients</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-view-list-alt"></i>Agents<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'add_agent' %}">Add Agent</a></li>
+                            <li><a href="{% url 'list_agents' %}">Agents List</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i>Projects<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'view_project' %}">View All Projects</a></li>
+                            <li><a href="{% url 'add_project' %}">Add Project</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i>Properties<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'list_properties' %}">View All Properties</a></li>
+                            <li><a href="{% url 'add_properties' %}">Add New Property</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i>Leads<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'fresh_leads' %}">Fresh Leads</a></li>
+                            <li><a href="{% url 'add_new_leads' %}">Add New Lead</a></li>
+                            <li><a href="{% url 'upcoming_followups' %}">Up-Coming Follow-up's</a></li>
+                            <li><a href="{% url 'todays_followups' %}">Today's Follow-up's</a></li>
+                            <li><a href="{% url 'old_followups' %}">Old Pending Follow-up's</a></li>
+                            <li><a href="{% url 'all_leads' %}">All Leads</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-layout-grid4-alt"></i>Search Leads</a>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-bell"></i>Payments<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'view_payment' %}">View Payment History</a></li>
+                            <li><a href="{% url 'add_payment' %}">Add New Payment</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-files"></i>Agreements<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'view_agreement' %}">View Agreement History</a></li>
+                            <li><a href="{% url 'add_agreement' %}">Add New Agreement</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i>Masters<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'masters_add_source' %}">Add Source</a></li>
+                            <li><a href="{% url 'masters_add_property_type' %}">Master - Add Property Type</a></li>
+                            <li><a href="{% url 'masters_add_amenities' %}">Master - Add Amenities</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-settings"></i>Settings<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'add_user' %}">New User</a></li>
+                            <li><a href="{% url 'password' %}">Change Password</a></li>
+                            <li><a href="{% url 'history' %}">User's List & Last Login</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{% url 'supports' %}" class="ti-target"></i>Support</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        
+                        
+                        
+                            <div class="header-icon">
+                                <a href="{% url 'home' %}"><i class="ti-home"></i></a>
+                            </div>    
+                    
+
+
+
+                        <div class="dropdown dib">
+                            <div class="header-icon" data-toggle="dropdown">
+                                <span class="user-avatar">User_name 
+                                    <i class="ti-angle-down f-s-10"></i>
+                                </span>
+                                <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-user"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-email"></i>
+                                                    <span>Inbox</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-settings"></i>
+                                                    <span>Setting</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'login' %}">
+                                                    <i class="ti-power-off"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content-wrap">
+        <div class="fresh">
+            <h1 class="bg-light">Un-Attempted Leads</h1>
+            <div class="box">
+                <div class=" container-fluid d-flex boxtop">
+                    <div class="dropdown ">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            10
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">1</a></li>
+                            <li><a class="dropdown-item" href="#">2</a></li>
+                            <li><a class="dropdown-item" href="#">3</a></li>
+                            <li><a class="dropdown-item" href="#">4</a></li>
+                            <li><a class="dropdown-item" href="#">5</a></li>
+                            <li><a class="dropdown-item" href="#">6</a></li>
+                            <li><a class="dropdown-item" href="#">7</a></li>
+                            <li><a class="dropdown-item" href="#">8</a></li>
+                            <li><a class="dropdown-item" href="#">9</a></li>
+                            <li><a class="dropdown-item" href="#">10</a></li>
+                        </ul>
+                    </div>
+                    <h6>records per page</h6>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+                <div>
+                    <table class="table1">
+                        <tr>
+                            <th>ID</th>
+                            <th>Lead Name</th>
+                            <th>Contact</th>
+                            <th>Requirement</th>
+                            <th>Source/Agent</th>
+                            <th>Lead Date</th>
+                            <th>Created By</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="d-flex">
+                    <h5 class="last">Showing 1 to 3 of 3 entries</h5>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+        <!-- jquery vendor -->
+    <script src="{% static 'JS/js/lib/jquery.min.js' %}"></script>
+    <script src="{% static 'JS/js/lib/jquery.nanoscroller.min.js' %}"></script>
+    <!-- nano scroller -->
+    <script src="{% static 'JS/js/lib/menubar/sidebar.js' %}"></script>
+    <script src="{% static 'JS/js/lib/preloader/pace.min.js' %}"></script>
+    <!-- sidebar -->
+    
+    <!-- bootstrap -->
+    <!-- Select2 -->
+    <script src="{% static 'JS/js/lib/select2/select2.full.min.js' %}"></script>
+    <script src="{% static 'JS/js/lib/form-validation/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'JS/js/lib/form-validation/jquery.validate-init.js' %}"></script>
+    <script src="{% static 'JS/js/lib/bootstrap.min.js' %}"></script><script src="{% static 'JS/js/scripts.js' %}"></script>
+    <!-- scripit init-->
+
+</body>
+
+</html>

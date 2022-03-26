@@ -1,0 +1,367 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Agent</title>
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    <!-- Styles -->
+    <link href="{% static 'CSS/css/lib/chartist/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/data-table/buttons.bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'CSS/css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/owl.carousel.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'CSS/css/lib/owl.theme.default.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'CSS/css/lib/menubar/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/css/lib/helper.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <div class="logo"><a href="#"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Mahalaxmi Real Estate</span></a></div>
+                <ul>
+                    <li class="label"></li>
+                    <br>
+                    <br>
+                    <li><a  href="{% url 'dashboard' %}"><i class="ti-home"></i>Dashboard</a>
+                    </li>
+
+                    <li class="label"></li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Clients<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'add_client' %}">Add Client</a></li>
+                            <li><a href="{% url 'list_clients' %}">List Clients</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-view-list-alt"></i>Agents<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'add_agent' %}">Add Agent</a></li>
+                            <li><a href="{% url 'list_agents' %}">Agents List</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i>Projects<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'view_project' %}">View All Projects</a></li>
+                            <li><a href="{% url 'add_project' %}">Add Project</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i>Properties<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'list_properties' %}">View All Properties</a></li>
+                            <li><a href="{% url 'add_properties' %}">Add New Property</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i>Leads<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'fresh_leads' %}">Fresh Leads</a></li>
+                            <li><a href="{% url 'add_new_leads' %}">Add New Lead</a></li>
+                            <li><a href="{% url 'upcoming_followups' %}">Up-Coming Follow-up's</a></li>
+                            <li><a href="{% url 'todays_followups' %}">Today's Follow-up's</a></li>
+                            <li><a href="{% url 'old_followups' %}">Old Pending Follow-up's</a></li>
+                            <li><a href="{% url 'all_leads' %}">All Leads</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-layout-grid4-alt"></i>Search Leads</a>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-bell"></i>Payments<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'view_payment' %}">View Payment History</a></li>
+                            <li><a href="{% url 'add_payment' %}">Add New Payment</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-files"></i>Agreements<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'view_agreement' %}">View Agreement History</a></li>
+                            <li><a href="{% url 'add_agreement' %}">Add New Agreement</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i>Masters<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'masters_add_source' %}">Add Source</a></li>
+                            <li><a href="{% url 'masters_add_property_type' %}">Master - Add Property Type</a></li>
+                            <li><a href="{% url 'masters_add_amenities' %}">Master - Add Amenities</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="sidebar-sub-toggle"><i class="ti-settings"></i>Settings<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="{% url 'add_user' %}">New User</a></li>
+                            <li><a href="{% url 'password' %}">Change Password</a></li>
+                            <li><a href="{% url 'history' %}">User's List & Last Login</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{% url 'supports' %}" class="ti-target"></i>Support</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        
+                        
+                        
+                            <div class="header-icon">
+                                <a href="{% url 'home' %}"><i class="ti-home"></i></a>
+                            </div>    
+                    
+
+
+
+                        <div class="dropdown dib">
+                            <div class="header-icon" data-toggle="dropdown">
+                                <span class="user-avatar">User_name 
+                                    <i class="ti-angle-down f-s-10"></i>
+                                </span>
+                                <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-user"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-email"></i>
+                                                    <span>Inbox</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-settings"></i>
+                                                    <span>Setting</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'user_login' %}">
+                                                    <i class="ti-power-off"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+	<div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>Add Agent</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-4 p-l-0 title-margin-left">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <!-- <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Form Validation</li>
+                                </ol> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <section id="main-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-validation">
+                                        <form class="form-valide" action="{% url 'add_agent' %}" method="post" enctype="multipart/form-data" >
+                                            {% csrf_token %}
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="name">Name <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input class="form-control" placeholder="Name" name="name" id="name" type="text" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="email">Email <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="email" name="email" placeholder="Your valid email...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="phoneus">Phone<span class="text-danger">*</span></label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="9876543210">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="dob">Date of birth<span class="text-danger">*</span></label>
+                                                <div class="col-lg-6">
+                                                    <input type="date" class="form-control" id="dob" name="dob">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="deals">Deals In <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="deals" name="delas" placeholder="Deals In...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="pan">PAN <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="pan" name="pan" placeholder="Enter PAN number...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="address">Address <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <textarea name="address" rows="4" cols="80"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="city">City <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="state">State <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="state" name="state" placeholder="Enter your state...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="pin">PIN code<span class="text-danger">*</span></label>
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" id="pin" name="pin" placeholder="411011">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label"><a data-toggle="modal" data-target="#modal-terms" href="#">Terms &amp; Conditions</a> <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <label class="css-control css-control-primary css-checkbox" for="terms">
+                                                        <input type="checkbox" class="css-control-input" id="terms" name="terms" value="1">
+                                                        <span class="css-control-indicator"></span> I agree to the terms
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-8 ml-auto">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="footer">
+                                <p>2018 © Admin Board. - <a href="#">example.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+<!-- jquery vendor -->
+<script src="{% static 'JS/js/lib/jquery.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/jquery.nanoscroller.min.js' %}"></script>
+<!-- nano scroller -->
+<script src="{% static 'JS/js/lib/menubar/sidebar.js' %}"></script>
+<script src="{% static 'JS/js/lib/preloader/pace.min.js' %}"></script>
+<!-- sidebar -->
+
+<script src="{% static 'JS/js/lib/bootstrap.min.js' %}"></script>
+<script src="{% static 'JS/js/scripts.js' %}"></script>
+<!-- bootstrap -->
+<script src="{% static 'JS/js/lib/bootstrap.min.js' %}"></script><script src="{%static 'assets/js/scripts.js' %}"></script>
+<script src="{% static 'JS/js/lib/circle-progress/circle-progress.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/circle-progress/circle-progress-init.js' %}"></script>
+<script src="{% static 'JS/js/lib/chartist/chartist.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/sparklinechart/jquery.sparkline.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/sparklinechart/sparkline.init.js' %}"></script>
+<script src="{% static 'JS/js/lib/owl-carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/owl-carousel/owl.carousel-init.js' %}"></script>
+<!-- scripit init-->
+<script src="{% static 'JS/js/dashboard2.js' %}"></script>
+<script src="{% static 'JS/js/lib/data-table/datatables.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/data-table/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/data-table/buttons.flash.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/data-table/jszip.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/data-table/pdfmake.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/data-table/vfs_fonts.js' %}"></script>
+<script src="{% static 'JS/js/lib/data-table/buttons.html5.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/data-table/buttons.print.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/data-table/datatables-init.js' %}"></script>
+
+  <!--  flot-chart js -->
+<script src="{% static 'JS/js/lib/flot-chart/excanvas.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.js' %}"></script>
+<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.pie.js' %}"></script>
+<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.time.js' %}"></script>
+<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.stack.js' %}"></script>
+<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.resize.js' %}"></script>
+<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.crosshair.js' %}"></script>
+<script src="{% static 'JS/js/lib/flot-chart/curvedLines.js' %}"></script>
+<script src="{% static 'JS/js/lib/flot-chart/flot-tooltip/jquery.flot.tooltip.min.js' %}"></script>
+<script src="{% static 'JS/js/lib/flot-chart/flot-chart-init.js' %}"></script>
+</body>
+
+</html>
