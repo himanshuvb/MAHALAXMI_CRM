@@ -226,7 +226,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'login' %}">
+                                                <a href="{% url 'user_login' %}">
                                                     <i class="ti-power-off"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -285,24 +285,25 @@
 
                                   <div class="form-validation">
 
-                                      <form class="form-valide" action="#" method="post">
+                                      <form class="form-valide" action="{% url 'add_agreement' %}" method="post" enctype = "multipart/form-data">
+                                        {% csrf_token %}
 
                                           <div class="form-group row">
                                               <label>Client Name </label>
-                                              <input id="size" type="text" name="t1" placeholder="Enter Client Name">
+                                              <input id="size" type="text" name="client_name" placeholder="Enter Client Name">
                                           </div>
                                           <br>
                                           <div class="form-group row">
 
                                               <div class="proj_loc">
                                                   <label>Email </label>
-                                                  <input id="size2" type="email" name="t3" placeholder="Enter Email Id">
+                                                  <input id="size2" type="email" name="email" placeholder="Enter Email Id">
                                               </div>
                                               &emsp;&emsp;
 
                                               <div class="proj_area">
                                                   <label>Phone Number</label>
-                                                  <input id="size2" type="text" name="t3" placeholder="Enter Phone Number">
+                                                  <input id="size2" type="text" name="phone_no" placeholder="Enter Phone Number">
                                               </div>
                                           </div>
 
@@ -310,19 +311,19 @@
                                           <div class="form-group row">
                                               <div class="proj_loc">
                                               <label> Property Name </label>
-                                              <input type="text" name="" value="" placeholder="Enter Property Name">
+                                              <input type="text" name="property_name"  placeholder="Enter Property Name">
                                               </div>
                                               &emsp;&emsp;
                                               <div class="proj_area">
                                                 <label> Project Name </label>
-                                                <input type="text" name="" value="" placeholder="Enter Project Name">
+                                                <input type="text" name="project_name" placeholder="Enter Project Name">
                                             </div>
                                           </div>
 
                                           <br>
                                           <div class="form-group row">
                                               <label> Payment Status </label>
-                                              <select>
+                                              <select name= "payment_status">
                                                   <option>Paid </option>
                                                   <option>Unpaid </option>
                                                   <option>Party-Paid</option>
@@ -335,14 +336,14 @@
  
                                               <div class="user">
                                                   <label id="user"> Agreement Id</label>
-                                                  <input  type="text" name="t4" 
+                                                  <input  type="text" name="agreement_id" 
                                                       placeholder="Enter Agreement Id " >
                                               </div>
 
                                               &emsp;&emsp;&emsp;
                                               <div class="time">
                                                   <label id="time">Agreement Date</label>
-                                                  <input type="date" id="currentTime" >
+                                                  <input type="date" id="currentTime" name="agreement_date">
                                               </div>
                                               <br><br>
                                           </div>
@@ -357,7 +358,6 @@
                                           <footer>
                                               <div class="form-group row">
                                                   <div>
-                                                      <button type="submit" class="btn btn-success">Pay</button>
 
                                                       <button type="submit" class="btn btn-primary">Submit</button>
 

@@ -3,9 +3,10 @@ from http import client
 import re
 from xml.dom.xmlbuilder import DOMBuilder
 from django.contrib.auth import authenticate, login, logout
-from .models import Client,Agent,Payment,Properties
+from .models import Agreement, Client,Agent,Payment,Properties, Source
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.files import File
 
 # Create your views here.
 def user_login(request):
@@ -86,7 +87,7 @@ def view_project(request):
 
 def add_properties(request):
     if (request.method=="GET"):
-        return render(request, 'baseapp/agents/add-properties.html')
+        return render(request, 'baseapp/properties/add-properties.html')
     if(request.method=="POST"):
         property_title = request.POST['property_title']
         select_project = request.POST['select_project']
@@ -96,8 +97,7 @@ def add_properties(request):
         reference = request.POST['reference']
         agent_contact = request.POST['agent_contact']
         cost_of_property = request.POST['cost_of_property']
-        amenities = request.POST['amenities']
-        img = request.POST['img']
+        img = File(request.FILES.get('img'))
         property_description = request.POST['property_description']        
 
         properties = Properties(
@@ -108,7 +108,6 @@ def add_properties(request):
             reference=reference, 
             agent_contact=agent_contact, 
             cost_of_property=cost_of_property,
-            amenities=amenities,
             img=img,
             property_description=property_description
         )
@@ -116,7 +115,8 @@ def add_properties(request):
         return redirect('dashboard')
 
 def list_properties(request):
-    return render(request, 'baseapp/properties/list-properties.html')
+    properties_list = Properties.objects.all()
+    return render(request, 'baseapp/properties/list-properties.html',context={"all_properties": properties_list})
 
 def all_leads(request):
     return render(request, 'baseapp/leads/Allleads.html')
@@ -146,7 +146,21 @@ def password(request):
     return render(request, 'baseapp/settings/password.html')
 
 def masters_add_source(request):
-    return render(request, 'baseapp/masters/master_add_source.html')
+    if request.method == "GET":
+        sources= Source.objects.all()
+        return render(request, 'baseapp/masters/master_add_source.html',context={"sources":sources}) 
+    if request.method == "POST":
+        source_name = request.POST['source_name']
+
+        source = Source()
+        source.source_name= source_name
+
+        source.save()
+        return redirect('masters_add_source')
+        
+
+   
+
 
 def masters_add_amenities(request):
     return render(request, 'baseapp/masters/master_addAmenities.html')
@@ -187,10 +201,35 @@ def view_payment(request):
     return render(request, 'baseapp/payments/view_payment.html',context={"payments":payment_list})
 
 def add_agreement(request):
-    return render(request, 'baseapp/agreements/add_agreement.html')
+    if (request.method=="GET"):
+        return render(request, 'baseapp/agreements/add_agreement.html')
+    if(request.method=="POST"):
+        client_name = request.POST['client_name']
+        email = request.POST['email']
+        phone_no = request.POST['phone_no']
+        property_name = request.POST['property_name']
+        project_name = request.POST['project_name']
+        payment_status = request.POST['payment_status']
+        agreement_id = request.POST['agreement_id']
+        agreement_date = request.POST['agreement_date']
+        
+        agreement = Agreement()
+        agreement.client_name = client_name
+        agreement.email = email
+        agreement.phone_no = phone_no
+        agreement.property_name = property_name
+        agreement.property_name = property_name
+        agreement.payment_status = payment_status
+        agreement.agreement_id = agreement_id
+        agreement.agreement_date= agreement_date
+        agreement.save()
+
+        return redirect('dashboard')
+        
 
 def view_agreement(request):
-    return render(request, 'baseapp/agreements/view_agreement.html')
+    agreement_list = Agreement.objects.all()
+    return render(request, 'baseapp/agreements/view_agreement.html',context={"agreements":agreement_list})
 
 def navbar_admin(request):
     return render(request, 'baseapp/admin/navbar_admin.html')

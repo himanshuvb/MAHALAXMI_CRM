@@ -41,86 +41,26 @@
             <div class="nano-content">
                 <div class="logo"><a href="#"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Mahalaxmi Real Estate</span></a></div>
                 <ul>
-                    <li class="label"></li>
-                    <br>
-                    <br>
+                    <ul>
+
+                    </li>
+
                     <li><a  href="{% url 'dashboard' %}"><i class="ti-home"></i>Dashboard</a>
                     </li>
-
-                    <li class="label"></li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Clients<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'add_client' %}">Add Client</a></li>
-                            <li><a href="{% url 'list_clients' %}">List Clients</a></li>
-                        </ul>
+                    <li><a  href="#"><i class="ti-user"></i>Add Salesperson</a>
                     </li>
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-view-list-alt"></i>Agents<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'add_agent' %}">Add Agent</a></li>
-                            <li><a href="{% url 'list_agents' %}">Agents List</a></li>
-                        </ul>
+                    <li><a  href="#"><i class="ti-view-list-alt"></i>View Salesperson</a>
                     </li>
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i>Projects<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'view_project' %}">View All Projects</a></li>
-                            <li><a href="{% url 'add_project' %}">Add Project</a></li>
-                        </ul>
+                    <li><a  href="#"><i class="ti-user"></i>Add Telecaller</a>
                     </li>
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid2-alt"></i>Properties<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'list_properties' %}">View All Properties</a></li>
-                            <li><a href="{% url 'add_properties' %}">Add New Property</a></li>
-                        </ul>
+                    <li><a  href="#"><i class="ti-view-list-alt"></i>View Telecallers</a>
                     </li>
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i>Leads<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'fresh_leads' %}">Fresh Leads</a></li>
-                            <li><a href="{% url 'add_new_leads' %}">Add New Lead</a></li>
-                            <li><a href="{% url 'upcoming_followups' %}">Up-Coming Follow-up's</a></li>
-                            <li><a href="{% url 'todays_followups' %}">Today's Follow-up's</a></li>
-                            <li><a href="{% url 'old_followups' %}">Old Pending Follow-up's</a></li>
-                            <li><a href="{% url 'all_leads' %}">All Leads</a></li>
-                        </ul>
+                    <li><a  href="#"><i class="ti-files"></i>Confirmed Bookings</a>
                     </li>
-
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-layout-grid4-alt"></i>Search Leads</a>
+                    <li><a  href="#"><i class="ti-layout-grid2-alt"></i>Ongoing Sites</a>
                     </li>
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-bell"></i>Payments<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'view_payment' %}">View Payment History</a></li>
-                            <li><a href="{% url 'add_payment' %}">Add New Payment</a></li>
-                        </ul>
+                    <li><a  href="#"><i class="ti-bell"></i>Employee Review</a>
                     </li>
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-files"></i>Agreements<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'view_agreement' %}">View Agreement History</a></li>
-                            <li><a href="{% url 'add_agreement' %}">Add New Agreement</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i>Masters<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'masters_add_source' %}">Add Source</a></li>
-                            <li><a href="{% url 'masters_add_property_type' %}">Master - Add Property Type</a></li>
-                            <li><a href="{% url 'masters_add_amenities' %}">Master - Add Amenities</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a class="sidebar-sub-toggle"><i class="ti-settings"></i>Settings<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'add_user' %}">New User</a></li>
-                            <li><a href="{% url 'password' %}">Change Password</a></li>
-                            <li><a href="{% url 'history' %}">User's List & Last Login</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="{% url 'supports' %}" class="ti-target"></i>Support</a></li>
                     
                 </ul>
             </div>
@@ -178,7 +118,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'login' %}">
+                                                <a href="{% url 'user_login' %}">
                                                     <i class="ti-power-off"></i>
                                                     <span>Logout</span>
                                                 </a>

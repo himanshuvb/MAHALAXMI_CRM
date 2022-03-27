@@ -175,7 +175,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'login' %}">
+                                                <a href="{% url 'user_login' %}">
                                                     <i class="ti-power-off"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -229,17 +229,18 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="form-validation">
-                                        <form class="form-valide" action="table-jsgrid.html" method="post" id="myForm">
+                                        <form class="form-valide" action="{% url 'add_properties' %}" method="post" id="myForm" enctype="multipart/form-data">
+                                            {% csrf_token %}
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-username">Property Title <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a Property Title">
+                                                    <input type="text" class="form-control" id="val-username" name="property_title" placeholder="Enter a Property Title">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-select2">Select Project <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select2" name="val-select2" style="width: 50%;" data-placeholder="Select Project">
+                                                    <select class="js-select2 form-control" id="val-select2" name="select_project" style="width: 50%;" data-placeholder="Select Project">
                                                         <option value="Project 1">Project 1</option>
                                                         <option value="Project 2">Project 2</option>
                                                         <option value="Project 3">Project 3</option>
@@ -251,7 +252,7 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-select3">Select Property Type <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <select class="js-select2 form-control" id="val-select3" name="val-select3" style="width: 50%;" data-placeholder="Select Property Type">
+                                                    <select class="js-select2 form-control" id="val-select3" name="select_property_type" style="width: 50%;" data-placeholder="Select Property Type">
                                                         <option value="1">Residential</option>
                                                         <option value="2">Commercial</option>
                                                         <option value="3">Other</option>
@@ -261,34 +262,34 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-size">Size <span class="text-danger">*</span></label>
                                                 <div class="col-lg-6", >
-                                                    <input type="number" class="form-control" id="val-size" name="val-size" placeholder="in Sq. Ft.", style="width: 50%;">
+                                                    <input type="number" class="form-control" id="val-size" name="size" placeholder="in Sq. Ft.", style="width: 50%;">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-age">Property Age <span class="text-danger">*</span></label>
                                                 <div class="col-lg-6", >
-                                                    <input type="number" class="form-control" id="val-age" name="val-age" placeholder="in Years", style="width: 50%;">
+                                                    <input type="number" class="form-control" id="val-age" name="property_age" placeholder="in Years", style="width: 50%;">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-agentname">Reference (Agent) <span class="text-danger">*</span> </label>
                                                 <div class="col-lg-8">
-                                                    <input type="text" class="form-control" id="val-agentname" name="val-agentname" placeholder="Agent Name / Direct", style="width: 80%;">
+                                                    <input type="text" class="form-control" id="val-agentname" name="reference" placeholder="Agent Name / Direct", style="width: 80%;">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-phoneus">Agent Contact <span class="text-danger">*</span></label>
                                                 <div class="col-lg-6">
-                                                    <input type="text" class="form-control" id="val-phoneus" name="val-phoneus" placeholder="999-9999-999">
+                                                    <input type="text" class="form-control" id="val-phoneus" name="agent_contact" placeholder="999-9999-999">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-cost">Cost of Property <span class="text-danger">*</span></label>
                                                 <div class="col-lg-6", >
-                                                    <input type="number" class="form-control" id="val-cost" name="val-cost" placeholder="in Rs.", style="width: 50%;">
+                                                    <input type="number" class="form-control" id="val-cost" name="cost_of_property" placeholder="in Rs.", style="width: 50%;">
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            {% comment %} <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label"><a data-toggle="modal" data-target="#modal-terms" >Amenities</a> </label>
                                                 <div class="col-lg-8">
                                                     <label class="css-control css-control-primary css-checkbox" for="val-terms">
@@ -306,17 +307,17 @@
                                                         <span class="css-control-indicator"></span> Water Supply
                                                     </label>
                                                 </div>
-                                            </div>
+                                            </div> {% endcomment %}
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-number">Image </label>
                                                 <div class="col-lg-6", >
-                                                    <input type="file" id="myFile" name="filename">
+                                                    <input type="file" id="myFile" name="img">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-suggestions">Property Description <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
-                                                    <textarea class="form-control" id="val-suggestions" name="val-suggestions" rows="5" placeholder=""></textarea>
+                                                    <textarea class="form-control" id="val-suggestions" name="property_description" rows="5" placeholder=""></textarea>
                                                 </div>
                                             </div>
 

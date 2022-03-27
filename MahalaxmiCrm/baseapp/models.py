@@ -1,6 +1,8 @@
 from datetime import datetime
+import email
 from statistics import mode
 from django.db import models
+from django.forms import CharField
 from phonenumber_field.modelfields import PhoneNumberField
 from djmoney.models.fields import MoneyField
 # Create your models here.
@@ -31,7 +33,6 @@ class Properties(models.Model):
     reference = models.CharField(max_length=100)
     agent_contact = PhoneNumberField(null=False, blank=False, unique=True)
     cost_of_property = MoneyField(decimal_places=2, default=0, default_currency='USD', max_digits=100)
-    # amenities = 
     img = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
     property_description = models.CharField(max_length=500)
 
@@ -45,3 +46,19 @@ class Payment(models.Model):
     pay_id = models.CharField(max_length=200)
     pay_date = models.DateField()
     property_description = models.CharField(max_length=500)
+
+class Agreement(models.Model):
+    client_name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=300)
+    phone_no = PhoneNumberField(null=False, blank=False, unique=True)
+    property_name = models.CharField(max_length=200, default='My Property')
+    project_name = models.CharField(max_length= 200, default='My Project')
+    payment_status = models.CharField(max_length=200, choices=(("Paid","Paid"), ("Unpaid","Unpaid"),("Party Paid","Party Paid")))
+    agreement_id = models.CharField(max_length=200)
+    agreement_date =  models.DateField()
+
+#MASTERS --> Add Source 
+
+class Source(models.Model):
+    source_name = models.CharField(max_length=200)
+

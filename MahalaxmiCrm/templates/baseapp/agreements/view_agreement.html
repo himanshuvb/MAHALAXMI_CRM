@@ -176,7 +176,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'login' %}">
+                                            <a href="{% url 'user_login' %}">
                                                 <i class="ti-power-off"></i>
                                                 <span>Logout</span>
                                             </a>
@@ -228,36 +228,27 @@
               <div class="card">
                 <table class="table table-bordered">
                   <thead>
-                    <th>Sr.No</th>
+                    <th>Id</th>
                     <th>Client Name</th>
                     <th>Email</th>
                     <th>Phone Number</th>
                     <th>Property Name</th>
                     <th>Project Name</th>
                     <th>View Agreement</th>
+                    <th>Action</th>
                   </thead>
                   <tbody>
+                    {% for agreement in agreements %}
                     <tr>
-                      <td>1</td>
-                      <td>Demo</td>
-                      <td>demo@gmail.com</td>
-                      <td>1234567890</td>
-                      <td>Demo Flat</td>
-                      <td>Project1</td>
-                      <a><td>View</td></a>
-
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Demo</td>
-                      <td>demo@gmail.com</td>
-                      <td>1234567890</td>
-                      <td>Demo Flat</td>
-                      <td>Project1</td>
-                      <a><td>View</td></a>
-
-                    </tr>
-
+                      <th>{{agreement.agreement_id}}</th>
+                      <th>{{agreement.client_name}}</th>
+                      <th>{{agreement.email}}</th>
+                      <th>{{agreement.phone_no}}</th>
+                      <th>{{agreement.property_name}}</th>
+                      <th>{{agreement.project_name}}</th>
+                      <th>View</th>
+                      <th>Edit & Delete</th>
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>

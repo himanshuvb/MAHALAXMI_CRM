@@ -170,7 +170,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'login' %}">
+                                                <a href="{% url 'user_login' %}">
                                                     <i class="ti-power-off"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -200,10 +200,11 @@
         </div>
         <div class="card-body">
             <div class="basic-form">
-                <form>
+                <form class="form-valide" action="{% url 'masters_add_source' %}" method="post" enctype = "multipart/form-data">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label>Source Name</label>
-                        <input type="name" class="form-control" placeholder="Website / Agent / Direct / Advertisement ">
+                        <input type="name" name= 'source_name' class="form-control" placeholder="Website / Agent / Direct / Advertisement ">
                     </div>
                     
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -234,31 +235,19 @@
                     <thead>
                         <tr>
                             <th>id</th>
-                            <th>Sources/Origins</th>
+                            <th>Sources</th>
                             <th>Created By</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Agent</td>
-                            <td>Demo</td>
-                            <td><button type="submit" class="btn btn-danger"><span class="ti-trash">Delete</span></button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Direct</td>
-                            <td>Demo</td>
-                            <td><button type="submit" class="btn btn-danger"><span class="ti-trash">Delete</span></button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Website</td>
-                            <td>Demo</td>
-                            <td><button type="submit" class="btn btn-danger"><span class="ti-trash">Delete</span></button></td>
-                            
-                        </tr>
+                       {% for source in sources %}
+                       <tr>
+                        <th>1</th>
+                        <th>{{source.source_name}} </th>
+                        <th>Demo</th>
+                        <th>Delete Button</th>
+                       {% endfor %}
                     </tbody>
                 </table>
             </div>
