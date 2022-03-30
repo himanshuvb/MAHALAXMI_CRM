@@ -4,13 +4,14 @@ from django.urls import path
 #from Mahalaxmi_CRM.MahalaxmiCrm.baseapp.views import booking_salesPerson
 from baseapp import views
 from django.conf.urls.static import static
-
+from phonenumber_field.modelfields import PhoneNumberField
 urlpatterns = [ path("user_login/",views.user_login,name="user_login"),
                path("dashboard/",views.dashboard,name="dashboard"),
                path("supports/",views.supports,name="supports"),
                path ("", views.home , name="home" ),
                path("add_client/",views.add_client , name="add_client" ),
                path("list_clients/", views.list_clients, name="list_clients"),
+               path("client/<int:client_id>", views.delete_client, name="delete_client"),
                path("add_agent/", views.add_agent, name="add_agent"),
                path("list_agents/", views.list_agents, name="list_agents"),
                path("add_project/", views.add_project, name="add_project"),
