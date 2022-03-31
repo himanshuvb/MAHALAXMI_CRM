@@ -172,7 +172,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'login' %}">
+                                            <a href="{% url 'user_login' %}">
                                                 <i class="ti-power-off"></i>
                                                 <span>Logout</span>
                                             </a>
@@ -202,19 +202,20 @@
           </div>
           <div class="card-body">
             <div class="basic-form">
-              <form>
+              <form action = "{% url 'masters_add_property_type' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="form-group">
                   <label for="property">Property Type</label>
-                  <select class="custom-select mr-sm-2" name="property " id="propertyType">
-                    <option value="1">Residential</option>
-                    <option value="2">Flat</option>
-                    <option value="3">Commercial</option>
-                    <option value="4">Bunglow</option>
+                  <select class="custom-select mr-sm-2" name="properties" id="propertyType">
+                    <option>Residential</option>
+                    <option>Flat</option>
+                    <option>Commercial</option>
+                    <option>Bunglow</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label>Add Sub/Master Property Type</label>
-                  <input type="name" class="form-control" placeholder="">
+                  <input type="name" class="form-control" name= "sub_property" placeholder="">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -248,29 +249,21 @@
                 <tr>
                   <th>id</th>
                   <th>Property Type</th>
+                  <th>Sub_Property_type</th>
                   <th>Created By</th>
-                  <th>Delete</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
+               {% for property in property_type %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>flat</td>
-                  <td>Demo</td>
-                  <td><button type="submit" class="btn btn-danger"><span class="ti-trash">Delete</span></button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Housing</td>
-                  <td>Demo</td>
-                  <td><button type="submit" class="btn btn-danger"><span class="ti-trash">Delete</span></button></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Residential</td>
-                  <td>Demo</td>
-                  <td><button type="submit" class="btn btn-danger"><span class="ti-trash">Delete</span></button></td>
-
+                <th>{{property.id}}</th>
+                <th>{{property.properties}}</th>
+                <th>{{property.sub_property}}</th>
+                <th>Demo</th>
+                <th>Edit or Delete</th>  
+                
+                {% endfor %}
                 </tr>
               </tbody>
             </table>

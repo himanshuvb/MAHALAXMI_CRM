@@ -57,8 +57,22 @@ class Agreement(models.Model):
     agreement_id = models.CharField(max_length=200)
     agreement_date =  models.DateField()
 
-#MASTERS --> Add Source 
+class Project(models.Model):
+    sr_no = models.AutoField(primary_key=True)
+    project_name = models.CharField(max_length=400)
+    location = models.CharField(max_length=100)
+    image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+    project_description = models.CharField(max_length=1000)
+    project_area = models.IntegerField(default=0)
+
+#MASTERS 
 
 class Source(models.Model):
     source_name = models.CharField(max_length=200)
 
+class Property_Type(models.Model):
+    properties = models.CharField(max_length=200, choices = (("Residential","Residential"), ("Flat", "Flat"), ("Commercial", "Commercial"), ("Bunglow","Bunglow")))
+    sub_property = models.CharField(max_length=200, default="Company")
+
+class Amenities(models.Model):
+    amenity = models.CharField(max_length= 200)

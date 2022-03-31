@@ -226,7 +226,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'login' %}">
+                                                <a href="{% url 'user_login' %}">
                                                     <i class="ti-power-off"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -285,24 +285,24 @@
 
                                     <div class="form-validation">
 
-                                        <form class="form-valide" action="#" method="post">
-
+                                        <form class="form-valide" action="{% url 'add_project' %}" method="post" enctype = "multipart/form-data">
+                                        {% csrf_token %}                
                                             <div class="form-group row">
                                                 <label>Project Name </label>
-                                                <input id="size" type="text" name="t1">
+                                                <input id="size" type="text" name="project_name">
                                             </div>
                                             <br>
                                             <div class="form-group row">
 
                                                 <div class="proj_loc">
                                                     <label>Project Location </label>
-                                                    <input id="size2" type="text" name="t3">
+                                                    <input id="size2" type="text" name="location">
                                                 </div>
                                                 &emsp;&emsp;
 
                                                 <div class="proj_area">
                                                     <label>Project Area (sq.ft.) </label>
-                                                    <input id="size2" type="text" name="t3">
+                                                    <input id="size2" type="text" name="project_area">
                                                 </div>
                                             </div>
 
@@ -310,13 +310,13 @@
 
                                             <div class="form-group row">
                                                 <label> Project Description </label>
-                                                <textarea rows="3"></textarea> <br> <br> <br>
+                                                <textarea rows="3" name="project_description"></textarea> <br> <br> <br>
                                             </div>
 
                                             <br>
                                             <div class="form-group row">
                                                 <label> Image </label>
-                                                <input id="size" type="file" name="fileupload" accept="image/*">
+                                                <input id="size" type="file" name="image" accept="image/*">
                                                 <br><br> <br>
                                             </div>
 
@@ -325,14 +325,14 @@
 
                                                 <div class="user">
                                                     <label id="user"> User </label>
-                                                    <input id="disabled" type="text" name="t4" value="Demo"
+                                                    <input id="disabled" type="text" name="user" value="Demo"
                                                         placeholder="Demo" readonly>
                                                 </div>
 
                                                 &emsp;&emsp;&emsp;
                                                 <div class="time">
                                                     <label id="time"> Time </label>
-                                                    <input type="text" id="currentTime" readonly>
+                                                    <input type="text" id="currentTime" name="time" readonly>
                                                 </div>
                                                 <br><br>
                                             </div>

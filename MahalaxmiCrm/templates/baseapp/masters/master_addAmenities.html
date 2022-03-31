@@ -172,7 +172,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{% url 'login' %}">
+                                            <a href="{% url 'user_login' %}">
                                                 <i class="ti-power-off"></i>
                                                 <span>Logout</span>
                                             </a>
@@ -202,10 +202,11 @@
           </div>
           <div class="card-body">
             <div class="basic-form">
-              <form>
+              <form method="post" action="{% url 'masters_add_amenities' %}" enctype="multipart/form-data">
+              {% csrf_token %}
                 <div class="form-group">
                   <label>Amenities</label>
-                  <input type="name" class="form-control" placeholder="">
+                  <input type="name" class="form-control" placeholder="" name="amenity">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -240,29 +241,17 @@
                   <th>id</th>
                   <th>Amenities</th>
                   <th>Created By</th>
-                  <th>Delete</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
+                {% for amenti in amenities %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Swimming Pool</td>
-                  <td>Demo</td>
-                  <td><button type="submit" class="btn btn-danger"><span class="ti-trash">Delete</span></button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Play Area</td>
-                  <td>Demo</td>
-                  <td><button type="submit" class="btn btn-danger"><span class="ti-trash">Delete</span></button></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Badminton Court</td>
-                  <td>Demo</td>
-                  <td><button type="submit" class="btn btn-danger"><span class="ti-trash">Delete</span></button></td>
-
-                </tr>
+                <td>{{amenti.id}}</td>
+                <td>{{amenti.amenity}}</td>
+                <td>Demo</td>
+                <td>Delete or Edit</td>
+                {% endfor %}
               </tbody>
             </table>
           </div>

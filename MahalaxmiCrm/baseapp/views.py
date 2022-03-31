@@ -3,7 +3,7 @@ from http import client
 import re
 from xml.dom.xmlbuilder import DOMBuilder
 from django.contrib.auth import authenticate, login, logout
-from .models import Agreement, Client,Agent,Payment,Properties, Source
+from .models import Agreement, Amenities, Client,Agent,Payment,Properties, Property_Type, Source,Project
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.files import File
@@ -80,11 +80,30 @@ def list_agents(request):
     return render(request, 'baseapp/agents/list-agents.html',context={"all_agent": agent_list})
 
 def add_project(request):
-    return render(request, 'baseapp/projects/add_project.html')
+    if (request.method=="GET"):
+        return render(request, 'baseapp/projects/add_project.html')
+    if(request.method=="POST"):
+        project_name = request.POST['project_name']
+        location = request.POST['location']
+        image =File(request.FILES.get('image'))
+        project_description = request.POST['project_description']
+        project_area = request.POST['project_area']
+
+        project = Project(
+        project_name = project_name,
+        location = location,
+        image = image,
+        project_description = project_description,
+        project_area = project_area
+
+        )
+
+        project.save()
+        return redirect('dashboard')
 
 def view_project(request):
-    return render(request, 'baseapp/projects/view_project.html')
-
+     project_list = Project.objects.all()
+     return render(request, 'baseapp/projects/view_project.html',context={'projects':project_list})
 def add_properties(request):
     if (request.method=="GET"):
         return render(request, 'baseapp/properties/add-properties.html')
@@ -163,10 +182,34 @@ def masters_add_source(request):
 
 
 def masters_add_amenities(request):
-    return render(request, 'baseapp/masters/master_addAmenities.html')
+    if request.method == "GET":
+        amenities= Amenities.objects.all()
+        return render(request, 'baseapp/masters/master_addAmenities.html',context={"amenities":amenities}) 
+    if request.method == "POST":
+        amenity = request.POST['amenity']
+
+        amenities = Amenities()
+        amenities.amenity= amenity
+
+        amenities.save()
+        return redirect('masters_add_amenities')
 
 def masters_add_property_type(request):
-    return render(request, 'baseapp/masters/masters_addPropertyType.html')
+
+    if request.method == "GET":
+        property_type= Property_Type.objects.all()
+        return render(request, 'baseapp/masters/masters_addPropertyType.html',context={"property_type":property_type}) 
+    if request.method == "POST":
+        properties = request.POST['properties']
+        sub_property = request.POST['sub_property']
+
+        property_type = Property_Type()
+        property_type.properties = properties
+        property_type.sub_property = sub_property
+
+        property_type.save()
+        return redirect('masters_add_property_type')
+
 
 def add_payment(request):
     if request.method=="GET":

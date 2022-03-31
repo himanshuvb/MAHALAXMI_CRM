@@ -176,7 +176,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'login' %}">
+                                                <a href="{% url 'user_login' %}">
                                                     <i class="ti-power-off"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -265,22 +265,22 @@
                                                                     <th>S.No.</th>
                                                                     <th>Project Name </th>
                                                                     <th>Location</th>
-                                                                    <th>Properties</th>
+                                                                    <th>Image</th>
+                                                                    <th>Project_area</th>
                                                                     <th>Action</th>
                                                                 </tr>
 
 
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <th scope="row">1</th>
-                                                                        <td> Some Project </td>
-                                                                        <td>Location</span></td>
-                                                                        <td>Count();</td>
-                                                                        <td> <button type="button"
-                                                                                class="btn btn-danger btn-sm"
-                                                                                style="float: left;">Delete</button>
-                                                                        </td>
-                                                                    </tr>
+                                                                   {% for project in projects%}
+                                                                   <tr>
+                                                                    <th>{{project.id}}</th>
+                                                                    <th>{{project.project_name}}</th>
+                                                                    <th>{{project.location}}</th>
+                                                                    <th>{{project.image}}</th>
+                                                                    <th>{{project.project_area}}</th>
+                                                                    <th>Delete and Edit buttons</th>
+                                                                   {% endfor %}
                                                                 </tbody>
                                                             </table>
                                                             <br>
