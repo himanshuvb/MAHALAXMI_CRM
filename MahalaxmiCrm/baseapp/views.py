@@ -7,6 +7,7 @@ from .models import Agreement, Amenities, Client,Agent,Payment,Properties, Prope
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.files import File
+import phonenumbers as pn 
 
 # Create your views here.
 def user_login(request):
@@ -235,7 +236,11 @@ def add_payment(request):
 
         return redirect('dashboard')
 
-
+def delete_client(request,client_id):  
+    
+    client = get_object_or_404(Client,id=client_id)
+    client.delete()
+    return redirect("list_clients")
 
 
 

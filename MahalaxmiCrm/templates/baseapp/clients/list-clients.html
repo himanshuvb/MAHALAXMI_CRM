@@ -248,6 +248,7 @@
                                     <td>{{client.DOB}}</td>
                                     <td>{{client.PAN}}</td>
                                     <td>{{ client.source }}</td>
+                                    <td><a href="{% url 'delete_client' client.id  %}">Delete client</a></td>
             
                                     {% endfor %}
                                   </tbody>
