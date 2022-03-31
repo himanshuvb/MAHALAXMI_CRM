@@ -3,7 +3,7 @@ from http import client
 import re
 from xml.dom.xmlbuilder import DOMBuilder
 from django.contrib.auth import authenticate, login, logout
-from .models import Agreement, Amenities, Client,Agent,Payment,Properties, Property_Type, Source,Project
+from .models import Add_Telecaller, Agreement, Amenities, Client,Agent,Payment,Properties, Property_Type, Source,Project
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.files import File
@@ -351,4 +351,28 @@ def TodaysFollowUps_telecaller(request):
 def UpComingFollowUps_telecaller(request):
     return render(request, 'baseapp/telecaller/FollowUps/UpComings.html')
 
+#Admin 
+
+def add_telecaller(request):
+    if(request.method =="GET"):
+        return render(request, 'baseapp/admin/add_telecaller.html')
+    if(request.method=="POST"):
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        dob = request.POST['dob']
+        qualification = request.POST['qualification']
+        experience = request.POST['experience']
+        city = request.POST['city']
+        state = request.POST['state']
+        pin = request.POST['pin']
+        
+        add_telecaller = Add_Telecaller(name = name,email = email, phone = phone, dob=dob, qualification=qualification,experience= experience, city=city, state=state, pin= pin)
+        add_telecaller.save()
+        #pan number must be unique it is not for now 
+        return redirect('list_telecaller')
+
+def list_telecaller(request):
+    list_telecaller = Add_Telecaller.objects.all()
+    return render(request, 'baseapp/admin/list_telecaller.html',context={"all_telecaller": list_telecaller})
 

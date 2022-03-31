@@ -76,3 +76,16 @@ class Property_Type(models.Model):
 
 class Amenities(models.Model):
     amenity = models.CharField(max_length= 200)
+
+#ADMIN
+
+class Add_Telecaller(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=300)
+    phone = models.CharField(max_length = 200, unique=True)
+    dob = models.DateField()
+    qualification = models.CharField(max_length=200, choices = (("12thPass","12thPass"),("b.b.a","b.b.a"),("b.s.c","b.s.c"),("M.B.A","M.B.A"),("B.COM","B.COM")))
+    experience = models.IntegerField(default = 0)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length= 200)
+    pin = models.IntegerField(default=0)

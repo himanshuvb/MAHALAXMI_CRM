@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Agreement, Amenities, Client, Agent,Payment, Project, Properties, Property_Type, Source
+from .models import Add_Telecaller, Agreement, Amenities, Client, Agent,Payment, Project, Properties, Property_Type, Source
 
 
 # Register your models here.
@@ -13,3 +13,5 @@ admin.site.register(Project)
 admin.site.register(Source)
 admin.site.register(Property_Type)
 admin.site.register(Amenities)
+#Admin 
+admin.site.register(Add_Telecaller)

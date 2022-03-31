@@ -58,5 +58,8 @@ urlpatterns = [ path("user_login/",views.user_login,name="user_login"),
                #Telecaller--FollowUps
                path("OldFollowUps_telecaller/", views.OldFollowUps_telecaller , name="OldFollowUps_telecaller"),
                path("TodaysFollowUps_telecaller/", views.TodaysFollowUps_telecaller, name="TodaysFollowUps_telecaller"),
-               path("UpcomingFollowUps_telecaller/", views.UpComingFollowUps_telecaller, name="UpcomingFollowUps_telecaller")]
+               path("UpcomingFollowUps_telecaller/", views.UpComingFollowUps_telecaller, name="UpcomingFollowUps_telecaller"),
+               #Admin
+               path("add_telecaller/", views.add_telecaller, name="add_telecaller"),
+               path("list_telecaller/", views.list_telecaller, name="list_telecaller")]
 urlpatterns += static(settings.STATIC_URL)
