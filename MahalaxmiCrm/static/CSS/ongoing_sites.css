@@ -1,0 +1,62 @@
+label {
+    width: 200px;
+    display: inline-block;
+}
+
+header {
+    display: flex;
+    border-bottom: 2px solid gray;
+    padding: 10px 0px 10px 30px;
+    background: #f0f0f0;
+    margin: -20px;
+}
+
+input {
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+#size {
+    width: 50vw;
+}
+
+#size2 {
+    width: 16vw;
+}
+
+textarea {
+    width: 50vw;
+    vertical-align: center;
+}
+
+#disabled,
+#currentTime {
+    cursor: not-allowed;
+    background-color: #e6e6e6;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-top: 2px solid gray;
+    background-color: #f0f0f0;
+    margin: -20px;
+}
+
+h5 {
+    padding: 10px 0;
+}
+
+.col {
+    max-width: 285px;
+    margin: 10px;
+}
+
+.card img{
+    min-width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}

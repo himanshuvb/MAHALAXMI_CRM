@@ -61,5 +61,8 @@ urlpatterns = [ path("user_login/",views.user_login,name="user_login"),
                path("UpcomingFollowUps_telecaller/", views.UpComingFollowUps_telecaller, name="UpcomingFollowUps_telecaller"),
                #Admin
                path("add_telecaller/", views.add_telecaller, name="add_telecaller"),
-               path("list_telecaller/", views.list_telecaller, name="list_telecaller")]
+               path("list_telecaller/", views.list_telecaller, name="list_telecaller"),
+               path("employee_review/", views.employee_review, name="employee_review"),
+               path("confirmed_bookings/", views.confirmed_bookings, name="confirmed_bookings"),
+               path("ongoing_sites/", views.ongoing_sites, name="ongoing_sites")]
 urlpatterns += static(settings.STATIC_URL)

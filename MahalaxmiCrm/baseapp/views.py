@@ -1,3 +1,4 @@
+import contextvars
 import email
 from http import client
 import re
@@ -375,4 +376,13 @@ def add_telecaller(request):
 def list_telecaller(request):
     list_telecaller = Add_Telecaller.objects.all()
     return render(request, 'baseapp/admin/list_telecaller.html',context={"all_telecaller": list_telecaller})
+
+def employee_review(request):
+    return render(request,'baseapp/admin/employee_review.html')
+
+def confirmed_bookings(request):
+    return render(request,'baseapp/admin/confirmed_bookings.html')
+
+def ongoing_sites(request):
+    return render(request, 'baseapp/admin/ongoing_sites.html')
 
