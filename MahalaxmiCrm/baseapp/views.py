@@ -386,3 +386,5 @@ def confirmed_bookings(request):
 def ongoing_sites(request):
     return render(request, 'baseapp/admin/ongoing_sites.html')
 
+
+
