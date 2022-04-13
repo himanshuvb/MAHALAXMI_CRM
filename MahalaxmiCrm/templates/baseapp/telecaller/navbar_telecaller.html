@@ -38,105 +38,103 @@
 
     <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
         <div class="nano">
-            <div class="nano-content">
-                <div class="logo"><a href="#"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Mahalaxmi Real Estate</span></a></div>
+          <div class="nano-content">
+            <div class="logo"><a href="#">
+                <!-- <img src="assets/images/logo.png" alt="" /> --><span>Mahalaxmi Real Estate</span>
+              </a></div>
+            <ul>
+    
+              </li>
+    
+              <li><a class="sidebar-sub-toggle" href="#"><i class="ti-home"></i>Dashboard</a>
+              </li>
+              <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Leads<span class="sidebar-collapse-icon ti-angle-down"></span></a>
                 <ul>
-                    <li class="label"></li>
-                    <br>
-                    <br>
-                    <li><a  href="{% url 'dashboard_telecaller' %}"><i class="ti-home"></i>Dashboard</a>
-                    </li>
-
-
-                    <li><a href="{% url 'NewLead_telecaller' %}" ><i class="ti-panel"></i>New Lead</a></li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i>Follow Ups<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            
-                            <li><a href="{% url 'UpcomingFollowUps_telecaller' %}">Up-Coming Follow-up's</a></li>
-                            <li><a href="{% url 'TodaysFollowUps_telecaller' %}">Today's Follow-up's</a></li>
-                            <li><a href="{% url 'OldFollowUps_telecaller' %}">Old Pending Follow-up's</a></li>
-                            
-                        </ul>
-                    </li>
-                    <li><a  href="{% url 'VisitList_telecaller' %}"><i class="ti-layout-grid4-alt"></i>Visit List</a> </li>
-                    <li><a  href="{% url 'BookingList_telecaller' %}"><i class="ti-files"></i>Booking List</a> </li>
-                    <li><a  href="{% url 'TotalBookings_telecaller' %}"><i class="ti-layout"></i>Total Bookings</a> </li>
-
-                    <li><a href="{% url 'deadLead_telecaller' %}" ><i class="ti-panel"></i>Dead Lead</a></li>
-                    
+                  <li><a href="#">Add Lead</a></li>
+                  <li><a href="#">Lead List</a></li>
                 </ul>
-            </div>
+              </li>
+              <li><a class="sidebar-sub-toggle" href="#"><i class="ti-user"></i>Followups</a>
+              </li>
+              <li><a class="sidebar-sub-toggle" href="#"><i class="ti-files"></i>Visit List</a>
+              </li>
+    
+    
+    
+            </ul>
+          </div>
         </div>
-    </div>
-    <!-- /# sidebar -->
-
-    <div class="header">
+      </div>
+      <!-- /# sidebar -->
+    
+      <div class="header">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="float-left">
-                        <div class="hamburger sidebar-toggle">
-                            <span class="line"></span>
-                            <span class="line"></span>
-                            <span class="line"></span>
-                        </div>
-                    </div>
-                    <div class="float-right">
-                        
-                        
-                        
-                            <div class="header-icon">
-                                <a href="{% url 'home' %}"><i class="ti-home"></i></a>
-                            </div>    
-                    
-
-
-
-                        <div class="dropdown dib">
-                            <div class="header-icon" data-toggle="dropdown">
-                                <span class="user-avatar">User_name 
-                                    <i class="ti-angle-down f-s-10"></i>
-                                </span>
-                                <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
-                                    <div class="dropdown-content-body">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="ti-user"></i>
-                                                    <span>Profile</span>
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="#">
-                                                    <i class="ti-email"></i>
-                                                    <span>Inbox</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="ti-settings"></i>
-                                                    <span>Setting</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{% url 'user_login' %}">
-                                                    <i class="ti-power-off"></i>
-                                                    <span>Logout</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="float-left">
+                <div class="hamburger sidebar-toggle">
+                  <span class="line"></span>
+                  <span class="line"></span>
+                  <span class="line"></span>
                 </div>
+              </div>
+              <div class="float-right">
+    
+    
+    
+                <div class="header-icon">
+                  <a href="index3.html"><i class="ti-home"></i></a>
+                </div>
+    
+    
+    
+    
+                <div class="dropdown dib">
+                  <div class="header-icon" data-toggle="dropdown">
+                    <span class="user-avatar">User_name
+                      <i class="ti-angle-down f-s-10"></i>
+                    </span>
+                    <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
+                      <div class="dropdown-content-body">
+                        <ul>
+                          <li>
+                            <a href="#">
+                              <i class="ti-user"></i>
+                              <span>Profile</span>
+                            </a>
+                          </li>
+    
+                          <li>
+                            <a href="#">
+                              <i class="ti-email"></i>
+                              <span>Inbox</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="ti-settings"></i>
+                              <span>Setting</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="page-login.html">
+                              <i class="ti-power-off"></i>
+                              <span>Logout</span>
+                            </a>
+                          </li>
+                        </ul>
+    
+                      </div>
+                    </div>
+                  </div>
+    
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
+    
  <!-- jquery vendor -->
  <script src="{% static 'JS/js/lib/jquery.min.js' %}"></script>
  <script src="{% static 'JS/js/lib/jquery.nanoscroller.min.js' %}"></script>

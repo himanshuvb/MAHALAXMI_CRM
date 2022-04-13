@@ -4,7 +4,7 @@ from http import client
 import re
 from xml.dom.xmlbuilder import DOMBuilder
 from django.contrib.auth import authenticate, login, logout
-from .models import Add_Telecaller, Agreement, Amenities, Client,Agent,Payment,Properties, Property_Type, Source,Project
+from .models import Add_Telecaller, Agreement, Amenities, Client,Agent,Payment,Properties, Property_Type, Source,Project, Add_SalesPerson, NewLead_Telecaller
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.files import File
@@ -326,8 +326,27 @@ def telecaller_login(request):
 def dashboard_telecaller(request):
     return render(request, 'baseapp/telecaller/dashboard_telecaller.html')
 
+#Lead
 def NewLead_telecaller(request):
-    return render(request, 'baseapp/telecaller/newLead_telecaller.html')
+    if(request.method =="GET"):
+        return render(request, 'baseapp/telecaller/Leads/newLead_telecaller.html')
+    if(request.method=="POST"):
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        dob = request.POST['dob']
+        interested_property = request.POST['interested_property']
+        budget = request.POST['budget']
+        next_followup = request.POST['next_followup']
+        
+        newLead_telecaller = NewLead_Telecaller(name = name,email = email, phone = phone, dob=dob, interested_property=interested_property,budget= budget, next_followup=next_followup)
+        newLead_telecaller.save()
+        #pan number must be unique it is not for now 
+        return redirect('ListLead_telecaller')
+
+def ListLead_telecaller(request):
+    listLead_telecaller = NewLead_Telecaller.objects.all()
+    return render(request, 'baseapp/telecaller/Leads/listLead_telecaller.html',context={"ListLead_telecaller": listLead_telecaller})
 
 def TotalBookings_telecaller(request):
     return render(request, 'baseapp/telecaller/TotalBookings_telecaller.html')
@@ -376,6 +395,29 @@ def add_telecaller(request):
 def list_telecaller(request):
     list_telecaller = Add_Telecaller.objects.all()
     return render(request, 'baseapp/admin/list_telecaller.html',context={"all_telecaller": list_telecaller})
+
+def add_salesperson(request):
+    if(request.method =="GET"):
+        return render(request, 'baseapp/admin/add_salesperson.html')
+    if(request.method=="POST"):
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        dob = request.POST['dob']
+        qualification = request.POST['qualification']
+        experience = request.POST['experience']
+        city = request.POST['city']
+        state = request.POST['state']
+        pin = request.POST['pin']
+        
+        add_salesperson = Add_SalesPerson(name = name,email = email, phone = phone, dob=dob, qualification=qualification,experience= experience, city=city, state=state, pin= pin)
+        add_salesperson.save()
+        #pan number must be unique it is not for now 
+        return redirect('list_salesperson')
+
+def list_salesperson(request):
+    list_salesperson = Add_SalesPerson.objects.all()
+    return render(request, 'baseapp/admin/list_salesperson.html',context={"all_salesperson": list_salesperson})
 
 def employee_review(request):
     return render(request,'baseapp/admin/employee_review.html')

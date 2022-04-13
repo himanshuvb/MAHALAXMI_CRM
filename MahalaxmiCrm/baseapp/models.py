@@ -89,3 +89,26 @@ class Add_Telecaller(models.Model):
     city = models.CharField(max_length=200)
     state = models.CharField(max_length= 200)
     pin = models.IntegerField(default=0)
+
+class Add_SalesPerson(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=300)
+    phone = models.CharField(max_length = 200, unique=True)
+    dob = models.DateField()
+    qualification = models.CharField(max_length=200, choices = (("12thPass","12thPass"),("b.b.a","b.b.a"),("b.s.c","b.s.c"),("M.B.A","M.B.A"),("B.COM","B.COM")))
+    experience = models.IntegerField(default = 0)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length= 200)
+    pin = models.IntegerField(default=0)
+
+#Telecaller
+
+class NewLead_Telecaller(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=300)
+    phone = models.CharField(max_length = 200, unique=True)
+    dob = models.DateField()
+    interested_property = models.CharField(max_length=200, choices = (("Villa","Villa"),("1 BHK","1 BHK"),("2 BHK","2 BHK"),("3 BHK","3 BHK"),("Commercial","Commercial")))
+    budget = models.IntegerField(default = 0)
+    next_followup = models.DateField()
+    

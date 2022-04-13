@@ -144,7 +144,7 @@
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Telecaller</h1>
+                                <h1>Leads</h1>
                             </div>
                         </div>
                     </div>
@@ -172,20 +172,20 @@
                                   <th>Name</th>
                                   <th>Email</th>
                                   <th>Phone No</th>
-                                  <th>Qualification</th>
-                                  <th>Work Experience</th>
-                                  <th>City</th><!-- Deal IN-->
+                                  <th>Interested Property</th>
+                                  <th>Budget</th>
+                                  <th>Next Followup</th><!-- Deal IN-->
                                   <th>Action</th>
                                   </thead>
                                   <tbody>
-                                    {% for telecaller in all_telecaller %}
+                                    {% for leads in ListLead_telecaller %}
                                     <tr>
-                                    <td>{{ telecaller.name }}</td>
-                                    <td>{{ telecaller.email }}</td>
-                                    <td>{{ telecaller.phone}}</td>
-                                    <td>{{ telecaller.qualification }}</td>
-                                    <td>{{ telecaller.experience}}</td>
-                                    <td>{{telecaller.city}}</td>
+                                    <td>{{ leads.name }}</td>
+                                    <td>{{ leads.email }}</td>
+                                    <td>{{ leads.phone}}</td>
+                                    <td>{{ leads.interested_property }}</td>
+                                    <td>{{ leads.budget}}</td>
+                                    <td>{{leads.next_followup}}</td>
                                     <td>Delete and Edit</td>
                                     
             
