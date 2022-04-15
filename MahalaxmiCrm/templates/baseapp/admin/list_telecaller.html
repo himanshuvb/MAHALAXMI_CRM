@@ -186,7 +186,7 @@
                                     <td>{{ telecaller.qualification }}</td>
                                     <td>{{ telecaller.experience}}</td>
                                     <td>{{telecaller.city}}</td>
-                                    <td>Delete and Edit</td>
+                                    <td><button><a  href="{% url 'delete_telecaller' telecaller.id %}">Delete</button></td>
                                     
             
                                     {% endfor %}

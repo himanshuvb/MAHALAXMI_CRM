@@ -307,6 +307,11 @@ def TotalBookings_salesPerson(request):
 def TodaysVisit_salesPerson(request):
     return render(request, 'baseapp/salesperson/TodaysVisit_salesPerson.html')
 
+def delete_salesperson(request,add_salesperson_id):
+    salesperson = get_object_or_404(Add_SalesPerson,id=add_salesperson_id)
+    salesperson.delete()
+    return redirect("list_salesperson")
+
 #SalesPerson -- FollowUps
 
 def OldFollowUps_salesPerson(request):
@@ -359,6 +364,12 @@ def BookingList_telecaller(request):
 
 def deadLead_telecaller(request):
     return render(request, 'baseapp/telecaller/deadLead_telecaller.html')
+
+def delete_telecaller(request,add_telecaller_id):
+    telecaller = get_object_or_404(Add_Telecaller,id=add_telecaller_id)
+    telecaller.delete()
+    return redirect("list_telecaller")
+    
 
 #Telecaller --FollowUps
 
