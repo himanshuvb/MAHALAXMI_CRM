@@ -112,3 +112,13 @@ class NewLead_Telecaller(models.Model):
     budget = models.IntegerField(default = 0)
     next_followup = models.DateField()
     
+#SalesPerson
+
+class Booking(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=300)
+    phone = models.CharField(max_length = 200, unique=True)
+    project_type = models.CharField(max_length=300)
+    property_type = models.CharField(max_length=200, choices = (("Villa","Villa"),("1 BHK","1 BHK"),("2 BHK","2 BHK"),("3 BHK","3 BHK"),("Commercial","Commercial")))
+    salesperson = models.CharField(max_length=300)
+    amount = models.CharField(max_length=300)

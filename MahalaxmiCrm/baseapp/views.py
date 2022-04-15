@@ -4,7 +4,7 @@ from http import client
 import re
 from xml.dom.xmlbuilder import DOMBuilder
 from django.contrib.auth import authenticate, login, logout
-from .models import Add_Telecaller, Agreement, Amenities, Client,Agent,Payment,Properties, Property_Type, Source,Project, Add_SalesPerson, NewLead_Telecaller
+from .models import Add_Telecaller, Agreement, Amenities, Booking, Client,Agent,Payment,Properties, Property_Type, Source,Project, Add_SalesPerson, NewLead_Telecaller
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.files import File
@@ -299,10 +299,25 @@ def dashboard_salesPerson(request):
     return render(request, 'baseapp/salesperson/dashboard_salesPerson.html')
 
 def booking_salesPerson(request):
-    return render(request, 'baseapp/salesperson/Booking_salesPerson.html')
+    if(request.method =="GET"):
+        return render(request, 'baseapp/salesperson/Booking_salesPerson.html')
+    if(request.method=="POST"):
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        project_type = request.POST['project_type']
+        property_type = request.POST['property_type']
+        salesperson = request.POST['salesperson']
+        amount = request.POST['amount']
+        
+        booking = Booking(name = name,email = email, phone = phone, project_type=project_type, property_type=property_type,salesperson= salesperson, amount=amount)
+        booking.save()
+        #pan number must be unique it is not for now 
+        return redirect('TotalBookings_salesPerson')
 
 def TotalBookings_salesPerson(request):
-    return render(request, 'baseapp/salesperson/TotalBookings_salesPerson.html')
+    total_bookings = Booking.objects.all()
+    return render(request, 'baseapp/salesperson/TotalBookings_salesPerson.html',context={"total_bookings": total_bookings})
 
 def TodaysVisit_salesPerson(request):
     return render(request, 'baseapp/salesperson/TodaysVisit_salesPerson.html')

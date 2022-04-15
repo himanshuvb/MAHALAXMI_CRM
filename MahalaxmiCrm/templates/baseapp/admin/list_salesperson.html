@@ -186,7 +186,7 @@
                                     <td>{{ sales.qualification }}</td>
                                     <td>{{ sales.experience}}</td>
                                     <td>{{sales.city}}</td>
-                                    <td><button><a  href="{% url 'delete_salesperson' sales.id %}">Delete</button></td>
+                                    <td><button class= " btn-danger "><a  style="color: white"  href="{% url 'delete_salesperson' sales.id %}">Delete</button></td>
                                     
             
                                     {% endfor %}

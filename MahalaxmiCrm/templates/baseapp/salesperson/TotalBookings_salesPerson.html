@@ -3,10 +3,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CRM Admin: </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmed Bookings</title>
     <!-- ================= Favicon ================== -->
     <!-- Standard -->
     <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
@@ -19,22 +19,21 @@
     <!-- Standard iPhone Touch Icon-->
     <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
     <!-- Styles -->
-   
-    <link href="{% static 'CSS/css/lib/chartist/chartist.min.css' %}" rel="stylesheet">
     <link href="{% static 'CSS/css/lib/font-awesome.min.css' %}" rel="stylesheet">
-    <link href="{% static 'CSS/css/lib/data-table/buttons.bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'CSS/css/lib/select2/select2.min.css' %}" rel="stylesheet">
     <link href="{% static 'CSS/css/lib/themify-icons.css' %}" rel="stylesheet">
-    <link href="{% static 'CSS/css/lib/owl.carousel.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'CSS/css/lib/owl.theme.default.min.css' %}" rel="stylesheet" />
     <link href="{% static 'CSS/css/lib/menubar/sidebar.css' %}" rel="stylesheet">
     <link href="{% static 'CSS/css/lib/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'CSS/css/lib/helper.css' %}" rel="stylesheet">
-    <link href="{% static 'CSS/style.css' %}" rel="stylesheet">
-  
+    <link href="{% static 'CSS/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'CSSt.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/confirmed_bookings.css'%}" rel="stylesheet">
     
+
 </head>
 
 <body>
+
     <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
         <div class="nano">
             <div class="nano-content">
@@ -118,7 +117,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'login' %}">
+                                                <a href="{% url 'user_login' %}">
                                                     <i class="ti-power-off"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -135,49 +134,137 @@
             </div>
         </div>
     </div>
- <!-- jquery vendor -->
- <script src="{% static 'JS/js/lib/jquery.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/jquery.nanoscroller.min.js' %}"></script>
- <!-- nano scroller -->
- <script src="{% static 'JS/js/lib/menubar/sidebar.js' %}"></script>
- <script src="{% static 'JS/js/lib/preloader/pace.min.js' %}"></script>
- <!-- sidebar -->
+    
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>Total Bookings</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <div id="main-content">
 
- <script src="{% static 'JS/js/lib/bootstrap.min.js' %}"></script>
- <script src="{% static 'JS/js/scripts.js' %}"></script>
- <!-- bootstrap -->
- <script src="{% static 'JS/js/lib/bootstrap.min.js' %}"></script><script src="{%static 'assets/js/scripts.js' %}"></script>
- <script src="{% static 'JS/js/lib/circle-progress/circle-progress.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/circle-progress/circle-progress-init.js' %}"></script>
- <script src="{% static 'JS/js/lib/chartist/chartist.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/sparklinechart/jquery.sparkline.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/sparklinechart/sparkline.init.js' %}"></script>
- <script src="{% static 'JS/js/lib/owl-carousel/owl.carousel.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/owl-carousel/owl.carousel-init.js' %}"></script>
- <!-- scripit init-->
- <script src="{% static 'JS/js/dashboard2.js' %}"></script>
- <script src="{% static 'JS/js/lib/data-table/datatables.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/data-table/dataTables.buttons.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/data-table/buttons.flash.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/data-table/jszip.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/data-table/pdfmake.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/data-table/vfs_fonts.js' %}"></script>
- <script src="{% static 'JS/js/lib/data-table/buttons.html5.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/data-table/buttons.print.min.js' %}"></script>
- <script src="{% static 'JS/js/lib/data-table/datatables-init.js' %}"></script>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="bootstrap-data-table-panel">
+                                    <div class="table-responsive">
+                                              
+                              <table id="row-select" class="display table table-borderd table-hover">
+                                <thead>
+                                <th>Sr. No.</th>
+                                <th>Client Name</th>
+                                <th>Email</th>
+                                <th>Phone No.</th>
+                                <th>Project</th>
+                                <th>Property Type</th>
+                                <th>Salesperson</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                                </thead>
+                                <tbody>
+                                    {% for booking in total_bookings %}
+                                    <tr>
+                                        <td>{{booking.id}}</td>
+                                        <td>{{booking.name}}</td>
+                                        <td>{{booking.email}}</td>
+                                        <td>{{booking.phone}}</td>
+                                        <td>{{booking.project_type}}</td>
+                                        <td>{{booking.property_type}}</td>
+                                        <td>{{booking.salesperson}}</td>
+                                        <td>{{booking.amount}}</td>
+                                        <td>Delete</td>
+                                    </tr> 
+                                    {% endfor %}
+                                  {% comment %} <tr>
+                                      <td>1</td>
+                                      <td>Akshay Pandit</td>
+                                      <td>akshayp123@gmail.com</td>
+                                      <td>9876543210</td>
+                                      <td>Blue Reef property</td>
+                                      <td>Row House</td>
+                                      <td>Lina Murthy</td>
+                                      <td>₹ 2.3 Crores</td>
+                                  </tr>
+                                  <tr>
+                                      <td>2</td>
+                                      <td>Isha Sundaram</td>
+                                      <td>isundaram1@gmail.com</td>
+                                      <td>9873516309</td>
+                                      <td>Orchard street</td>
+                                      <td>Flat, 2 BHK</td>
+                                      <td>Devansh Mangal</td>
+                                      <td>₹ 70 Lacs</td>
+                                  </tr>
+                                  <tr>
+                                      <td>3</td>
+                                      <td>Adhya Chaudhuri</td>
+                                      <td>adhyachaudhari@yahoo.com</td>
+                                      <td>8769304333</td>
+                                      <td>The Home Genies</td>
+                                      <td>Flat, 1 BHK</td>
+                                      <td>Devansh Mangal</td>
+                                      <td>₹ 55 Lacs</td>
+                                  </tr>
+                                  <tr>
+                                      <td>4</td>
+                                      <td>Vihaan Thakkar</td>
+                                      <td>vihaaniit@gmail.com</td>
+                                      <td>8335426789</td>
+                                      <td>Capstone Real Estate</td>
+                                      <td>Commercial</td>
+                                      <td>Savitri Batra</td>
+                                      <td>₹ 85 Lacs</td>
+                                  </tr>
+                                  <tr>
+                                      <td>5</td>
+                                      <td>Anika Arora</td>
+                                      <td>anikaarora@yahoo.com</td>
+                                      <td>9098764367</td>
+                                      <td>Quad-City real estate</td>
+                                      <td>Penthouse</td>
+                                      <td>Shresth Goswami</td>
+                                      <td>₹ 1.2 Crores</td>
+                                  </tr> {% endcomment %}
 
-   <!--  flot-chart js -->
-<script src="{% static 'JS/js/lib/flot-chart/excanvas.min.js' %}"></script>
-<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.js' %}"></script>
-<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.pie.js' %}"></script>
-<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.time.js' %}"></script>
-<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.stack.js' %}"></script>
-<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.resize.js' %}"></script>
-<script src="{% static 'JS/js/lib/flot-chart/jquery.flot.crosshair.js' %}"></script>
-<script src="{% static 'JS/js/lib/flot-chart/curvedLines.js' %}"></script>
-<script src="{% static 'JS/js/lib/flot-chart/flot-tooltip/jquery.flot.tooltip.min.js' %}"></script>
-<script src="{% static 'JS/js/lib/flot-chart/flot-chart-init.js' %}"></script>
+                                </tbody>
+                            </table>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                            <!-- /# card -->
+                        </div>
+                        <!-- /# column -->
+                    </div>
+                    <!-- /# row -->
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+    <!-- jquery vendor -->
+    <script src="{% static 'JS/js/lib/jquery.min.js' %}"></script>
+    <script src="{% static 'JS/js/lib/jquery.nanoscroller.min.js' %}"></script>
+    <!-- nano scroller -->
+    <script src="{% static 'JS/js/lib/menubar/sidebar.js' %}"></script>
+    <script src="{% static 'JS/js/lib/preloader/pace.min.js' %}"></script>
+    <!-- sidebar -->
+
+    <!-- bootstrap -->
+
+
+    <script src="{% static 'JS/js/lib/bootstrap.min.js' %}"></script>
+    <script src="{% static 'JS/js/scripts.js' %}"></script>
+    <!-- scripit init-->
 </body>
+
 </html>
-            
