@@ -42,21 +42,23 @@
 
                     </li>
 
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-home"></i>Dashboard</a>
+                    <li><a  href="#"><i class="ti-home"></i>Dashboard</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-user"></i>Add Salesperson</a>
+                    <li><a  href="{% url 'add_salesperson' %}"><i class="ti-user"></i>Add Salesperson</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-view-list-alt"></i>View Salesperson</a>
+                    <li><a  href="{% url 'list_salesperson' %}"><i class="ti-view-list-alt"></i>View Salesperson</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-user"></i>Add Telecaller</a>
+                    <li><a  href="{% url 'add_telecaller' %}"><i class="ti-user"></i>Add Telecaller</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-view-list-alt"></i>View Telecallers</a>
+                    <li><a  href="{% url 'list_telecaller' %}"><i class="ti-view-list-alt"></i>View Telecallers</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-files"></i>Confirmed Bookings</a>
+                    <li><a  href="{% url 'confirmed_bookings' %}"><i class="ti-files"></i>Confirmed Bookings</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-layout-grid2-alt"></i>Ongoing Sites</a>
+                    <li><a  href="{% url 'add_sites' %}"><i class="ti-layout-grid2-alt"></i>Add Sites </a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-bell"></i>Employee Review</a>
+                    <li><a  href="{% url 'ongoing_sites' %}"><i class="ti-layout-grid2-alt"></i>Ongoing Sites</a>
+                    </li>
+                    <li><a  href="{% url 'employee_review' %}"><i class="ti-bell"></i>Employee Review</a>
                     </li>
 
 
@@ -171,7 +173,20 @@
                                 <th>Amount</th>
                                 </thead>
                                 <tbody>
-                                  <tr>
+                                    {% for booking in confirmed_bookings %}
+                                    <tr>
+                                        <td>{{booking.id}}</td>
+                                        <td>{{booking.name}}</td>
+                                        <td>{{booking.email}}</td>
+                                        <td>{{booking.phone}}</td>
+                                        <td>{{booking.project_type}}</td>
+                                        <td>{{booking.property_type}}</td>
+                                        <td>{{booking.salesperson}}</td>
+                                        <td>{{booking.amount}}</td>
+                                        <td>Delete</td>
+                                    </tr> 
+                                    {% endfor %}
+                                  {% comment %} <tr>
                                       <td>1</td>
                                       <td>Akshay Pandit</td>
                                       <td>akshayp123@gmail.com</td>
@@ -220,7 +235,7 @@
                                       <td>Penthouse</td>
                                       <td>Shresth Goswami</td>
                                       <td>₹ 1.2 Crores</td>
-                                  </tr>
+                                  </tr> {% endcomment %}
 
                                 </tbody>
                             </table>

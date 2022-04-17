@@ -4,7 +4,7 @@ from http import client
 import re
 from xml.dom.xmlbuilder import DOMBuilder
 from django.contrib.auth import authenticate, login, logout
-from .models import Add_Telecaller, Agreement, Amenities, Booking, Client,Agent,Payment,Properties, Property_Type, Source,Project, Add_SalesPerson, NewLead_Telecaller
+from .models import Add_Telecaller, Agreement, Amenities, Booking, Client,Agent,Payment,Properties, Property_Type, Source,Project, Add_SalesPerson, NewLead_Telecaller, Add_Sites
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.files import File
@@ -449,10 +449,31 @@ def employee_review(request):
     return render(request,'baseapp/admin/employee_review.html')
 
 def confirmed_bookings(request):
-    return render(request,'baseapp/admin/confirmed_bookings.html')
+    confirmed_bookings = Booking.objects.all()
+    return render(request, 'baseapp/admin/confirmed_bookings.html',context={"confirmed_bookings": confirmed_bookings})
+
+def add_sites(request):
+    if(request.method =="GET"):
+        return render(request, 'baseapp/admin/add_sites.html')
+    if(request.method=="POST"):
+        site_name = request.POST['site_name']
+        img = File(request.FILES.get('img'))
+        property_type = request.POST['property_type']
+        location = request.POST['location']
+
+       
+        
+        add_sites = Add_Sites(site_name = site_name, img = img, property_type = property_type, location = location)
+        add_sites.save()
+        #pan number must be unique it is not for now 
+        return redirect('ongoing_sites')
+
+    
+
 
 def ongoing_sites(request):
-    return render(request, 'baseapp/admin/ongoing_sites.html')
+    ongoing_sites = Add_Sites.objects.all()
+    return render(request, 'baseapp/admin/ongoing_sites.html',context={"all_sites": ongoing_sites})
 
 
 

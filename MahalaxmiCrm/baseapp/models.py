@@ -101,6 +101,12 @@ class Add_SalesPerson(models.Model):
     state = models.CharField(max_length= 200)
     pin = models.IntegerField(default=0)
 
+class Add_Sites(models.Model):
+    site_name = models.CharField(max_length=200)
+    img = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+    property_type = models.CharField(max_length=200, choices = (("Villa","Villa"),("1 BHK","1 BHK"),("2 BHK","2 BHK"),("3 BHK","3 BHK"),("Office","Office")))
+    location = models.CharField(max_length=500)
+
 #Telecaller
 
 class NewLead_Telecaller(models.Model):
@@ -122,3 +128,4 @@ class Booking(models.Model):
     property_type = models.CharField(max_length=200, choices = (("Villa","Villa"),("1 BHK","1 BHK"),("2 BHK","2 BHK"),("3 BHK","3 BHK"),("Commercial","Commercial")))
     salesperson = models.CharField(max_length=300)
     amount = models.CharField(max_length=300)
+

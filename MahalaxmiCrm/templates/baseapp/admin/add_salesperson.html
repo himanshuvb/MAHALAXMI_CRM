@@ -48,19 +48,21 @@
     
                         <li><a  href="#"><i class="ti-home"></i>Dashboard</a>
                         </li>
-                        <li><a  href="#"><i class="ti-user"></i>Add Salesperson</a>
+                        <li><a  href="{% url 'add_salesperson' %}"><i class="ti-user"></i>Add Salesperson</a>
                         </li>
-                        <li><a  href="#"><i class="ti-view-list-alt"></i>View Salesperson</a>
+                        <li><a  href="{% url 'list_salesperson' %}"><i class="ti-view-list-alt"></i>View Salesperson</a>
                         </li>
                         <li><a  href="{% url 'add_telecaller' %}"><i class="ti-user"></i>Add Telecaller</a>
                         </li>
                         <li><a  href="{% url 'list_telecaller' %}"><i class="ti-view-list-alt"></i>View Telecallers</a>
                         </li>
-                        <li><a  href="#"><i class="ti-files"></i>Confirmed Bookings</a>
+                        <li><a  href="{% url 'confirmed_bookings' %}"><i class="ti-files"></i>Confirmed Bookings</a>
                         </li>
-                        <li><a  href="#"><i class="ti-layout-grid2-alt"></i>Ongoing Sites</a>
+                        <li><a  href="{% url 'add_sites' %}"><i class="ti-layout-grid2-alt"></i>Add Sites </a>
                         </li>
-                        <li><a  href="#"><i class="ti-bell"></i>Employee Review</a>
+                        <li><a  href="{% url 'ongoing_sites' %}"><i class="ti-layout-grid2-alt"></i>Ongoing Sites</a>
+                        </li>
+                        <li><a  href="{% url 'employee_review' %}"><i class="ti-bell"></i>Employee Review</a>
                         </li>
                         
                     </ul>

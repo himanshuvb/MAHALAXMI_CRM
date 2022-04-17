@@ -69,5 +69,6 @@ urlpatterns = [ path("user_login/",views.user_login,name="user_login"),
                path("list_salesperson/", views.list_salesperson, name="list_salesperson"),
                path("employee_review/", views.employee_review, name="employee_review"),
                path("confirmed_bookings/", views.confirmed_bookings, name="confirmed_bookings"),
-               path("ongoing_sites/", views.ongoing_sites, name="ongoing_sites")]
+               path("ongoing_sites/", views.ongoing_sites, name="ongoing_sites"),
+               path("add_sites/", views.add_sites, name = "add_sites")]
 urlpatterns += static(settings.STATIC_URL)

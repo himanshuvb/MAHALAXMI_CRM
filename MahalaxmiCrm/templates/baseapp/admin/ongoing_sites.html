@@ -43,21 +43,23 @@
 
                     </li>
 
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-home"></i>Dashboard</a>
+                    <li><a  href="#"><i class="ti-home"></i>Dashboard</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-user"></i>Add Salesperson</a>
+                    <li><a  href="{% url 'add_salesperson' %}"><i class="ti-user"></i>Add Salesperson</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-view-list-alt"></i>View Salesperson</a>
+                    <li><a  href="{% url 'list_salesperson' %}"><i class="ti-view-list-alt"></i>View Salesperson</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-user"></i>Add Telecaller</a>
+                    <li><a  href="{% url 'add_telecaller' %}"><i class="ti-user"></i>Add Telecaller</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-view-list-alt"></i>View Telecallers</a>
+                    <li><a  href="{% url 'list_telecaller' %}"><i class="ti-view-list-alt"></i>View Telecallers</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-files"></i>Confirmed Bookings</a>
+                    <li><a  href="{% url 'confirmed_bookings' %}"><i class="ti-files"></i>Confirmed Bookings</a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-layout-grid2-alt"></i>Ongoing Sites</a>
+                    <li><a  href="{% url 'add_sites' %}"><i class="ti-layout-grid2-alt"></i>Add Sites </a>
                     </li>
-                    <li><a class="sidebar-sub-toggle" href="#"><i class="ti-bell"></i>Employee Review</a>
+                    <li><a  href="{% url 'ongoing_sites' %}"><i class="ti-layout-grid2-alt"></i>Ongoing Sites</a>
+                    </li>
+                    <li><a  href="{% url 'employee_review' %}"><i class="ti-bell"></i>Employee Review</a>
                     </li>
 
 
@@ -155,22 +157,22 @@
                 <div id="main-content">
 
                     <div class="row row-cols-1 row-cols-md-auto g-4">
+                        {% for site in all_sites %}
                         <div class="col">
                           <div class="card h-100">
-                            <img src="{% static 'images\ongoing_sites\flat1.jpg' %}" class="card-img-top" alt="...">
+                            <img src="{{site.img}}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Orchard street</h5>
-                                <p class="card-text">Flats Available: 4 [2 & 3 BHK]</p>
+                                <h5 class="card-title">{{site.site_name}}</h5>
+                                <p class="card-text">{{site.property_type}}</p>
                                 <p class="card-text">
                                     Location: 
-                                    Street:  8563, East Park Road, Model Basti
-                                    City:   Delhi
-                                    State/province/area:    Delhi
+                                    {{site.location}}
                                 </p>
                             </div>
                           </div>
                         </div>
-                        <div class="col">
+                        {% endfor %}
+                        {% comment %} <div class="col">
                           <div class="card h-100">
                             <img src="{% static 'images\ongoing_sites\flat2.jpg' %}" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -226,7 +228,7 @@
                                     State/province/area:    Maharashtra
                                 </p></div>
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                         
 
 
