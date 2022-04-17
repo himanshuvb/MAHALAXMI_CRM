@@ -292,7 +292,10 @@ def navbar_salesPerson(request):
 #SalesPerson
 
 def sales_login(request):
-    return render(request, 'baseapp/salesperson/sales_login.html')
+    if (request.method == "GET"):
+        return render(request, 'baseapp/salesperson/sales_login.html')
+    if (request.method == "POST"):
+        return redirect('booking_salesPerson')
 
 
 def dashboard_salesPerson(request):
@@ -341,7 +344,10 @@ def UpComingFollowUps_salesPerson(request):
 # Telecaller
 
 def telecaller_login(request):
-    return render(request, 'baseapp/telecaller/telecaller_login.html')
+    if (request.method == "GET"):
+        return render(request, 'baseapp/telecaller/telecaller_login.html')
+    if (request.method == "POST"):
+        return redirect('VisitList_telecaller')
 
 def dashboard_telecaller(request):
     return render(request, 'baseapp/telecaller/dashboard_telecaller.html')
