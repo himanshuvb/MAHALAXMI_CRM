@@ -45,6 +45,7 @@ urlpatterns = [ path("user_login/",views.user_login,name="user_login"),
                path("TotalBookings_salesPerson/", views.TotalBookings_salesPerson, name="TotalBookings_salesPerson"),
                path("TodaysVisit_salesPerson/", views.TodaysVisit_salesPerson, name="TodaysVisit_salesPerson"),
                #SalesPerson--FollowUps
+               path('FollowUps_salesPerson/', views.FollowUps_salesPerson , name = "followUps_salesPerson"),
                path("OldFollowUps_salesPerson/", views.OldFollowUps_salesPerson, name="OldFollowUps_salesPerson"),
                path("TodaysFollowUps_salesPerson/", views.TodaysFollowUps_salesPerson, name="TodaysFollowUps_salesPerson"),
                path("UpComingFollowUps_salesPerson/", views.UpComingFollowUps_salesPerson, name= "UpcomingFollowUps_salesPerson"),
@@ -56,12 +57,17 @@ urlpatterns = [ path("user_login/",views.user_login,name="user_login"),
                path("delete_telecaller/<int:add_telecaller_id>/delete/", views.delete_telecaller, name="delete_telecaller"),
                path("listLead_telecaller/", views.ListLead_telecaller, name="ListLead_telecaller"),
                path("TotalBookings_telecaller/", views.TotalBookings_telecaller, name="TotalBookings_telecaller"),
+               #VisitList
+               path("addVisit/" , views.addVisit , name="addVisit"),
                path("visitList_telecaller/", views.VisitList_telecaller, name="VisitList_telecaller"),
                path('deadLead_telecaller/', views.deadLead_telecaller, name="deadLead_telecaller"),
                #Telecaller--FollowUps
+               
                path("OldFollowUps_telecaller/", views.OldFollowUps_telecaller , name="OldFollowUps_telecaller"),
                path("TodaysFollowUps_telecaller/", views.TodaysFollowUps_telecaller, name="TodaysFollowUps_telecaller"),
                path("UpcomingFollowUps_telecaller/", views.UpComingFollowUps_telecaller, name="UpcomingFollowUps_telecaller"),
+               path("addFollowUps/", views.addFollowUps , name="addFollowUps"),
+               path("followups_telecaller/", views.followUps_telecaller , name = "followups_telecaller"),
                #Admin
                path("add_telecaller/", views.add_telecaller, name="add_telecaller"),
                path("list_telecaller/", views.list_telecaller, name="list_telecaller"),

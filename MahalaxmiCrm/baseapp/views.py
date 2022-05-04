@@ -4,7 +4,7 @@ from http import client
 import re
 from xml.dom.xmlbuilder import DOMBuilder
 from django.contrib.auth import authenticate, login, logout
-from .models import Add_Telecaller, Agreement, Amenities, Booking, Client,Agent,Payment,Properties, Property_Type, Source,Project, Add_SalesPerson, NewLead_Telecaller, Add_Sites
+from .models import Add_Telecaller, Agreement, Amenities, Booking, Client,Agent, FollowUps_Telecaller,Payment,Properties, Property_Type, Source,Project, Add_SalesPerson, NewLead_Telecaller, Add_Sites, Visit_Telecaller
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.files import File
@@ -323,7 +323,8 @@ def TotalBookings_salesPerson(request):
     return render(request, 'baseapp/salesperson/TotalBookings_salesPerson.html',context={"total_bookings": total_bookings})
 
 def TodaysVisit_salesPerson(request):
-    return render(request, 'baseapp/salesperson/TodaysVisit_salesPerson.html')
+    visitList_tele = Visit_Telecaller.objects.all()
+    return render(request, 'baseapp/salesperson/TodaysVisit_salesPerson.html',context={"visitList_telecaller": visitList_tele})
 
 def delete_salesperson(request,add_salesperson_id):
     salesperson = get_object_or_404(Add_SalesPerson,id=add_salesperson_id)
@@ -332,6 +333,9 @@ def delete_salesperson(request,add_salesperson_id):
 
 #SalesPerson -- FollowUps
 
+def FollowUps_salesPerson(request):
+    followUps_telecaller = FollowUps_Telecaller.objects.all()
+    return render(request, 'baseapp/telecaller/FollowUps/FollowUps_telecaller.html',context={"followUps_telecaller": followUps_telecaller})
 def OldFollowUps_salesPerson(request):
     return render(request, 'baseapp/salesperson/FollowUps/Old.html')
 
@@ -376,9 +380,25 @@ def ListLead_telecaller(request):
 
 def TotalBookings_telecaller(request):
     return render(request, 'baseapp/telecaller/TotalBookings_telecaller.html')
+#Visits
+
+def addVisit(request):
+    if(request.method =="GET"):
+        return render(request, 'baseapp/telecaller/Visit/addVisit.html')
+    if(request.method=="POST"):
+        employee_name = request.POST['employee_name']
+        site_details = request.POST['site_details']
+        visit_date = request.POST['visit_date']
+        remarks = request.POST['remarks']
+        
+        add_Visit = Visit_Telecaller(employee_name = employee_name,site_details= site_details,visit_date= visit_date, remarks = remarks )
+        add_Visit.save()
+        #pan number must be unique it is not for now 
+        return redirect('VisitList_telecaller')
 
 def VisitList_telecaller(request):
-    return render(request, 'baseapp/telecaller/visitList_telecaller.html')
+    visitList_tele = Visit_Telecaller.objects.all()
+    return render(request, 'baseapp/telecaller/Visit/visitList_telecaller.html',context={"visitList_telecaller": visitList_tele})
 
 def BookingList_telecaller(request):
     return render(request, 'baseapp/telecaller/BookingList_telecaller.html')
@@ -402,6 +422,26 @@ def TodaysFollowUps_telecaller(request):
 
 def UpComingFollowUps_telecaller(request):
     return render(request, 'baseapp/telecaller/FollowUps/UpComings.html')
+
+def addFollowUps(request):
+    if(request.method =="GET"):
+        return render(request, 'baseapp/telecaller/FollowUps/addFollowUps.html')
+    if(request.method=="POST"):
+        name = request.POST['name']
+        phone_no = request.POST['phone_no']
+        followUp_By = request.POST['followUp_By']
+        followUp_date = request.POST['followUp_date']
+        remarks = request.POST['remarks']
+        
+        
+        addFollowUps = FollowUps_Telecaller(name = name, phone_no = phone_no,followUp_By = followUp_By, followUp_date = followUp_date ,remarks= remarks)
+        addFollowUps.save()
+        #pan number must be unique it is not for now 
+        return redirect('followups_telecaller')
+
+def followUps_telecaller(request):
+    followUps_telecaller = FollowUps_Telecaller.objects.all()
+    return render(request, 'baseapp/telecaller/FollowUps/FollowUps_telecaller.html',context={"followUps_telecaller": followUps_telecaller})
 
 #Admin 
 

@@ -143,6 +143,97 @@
         </div>
       </div>
     
+  <div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h1>Add FollowUp</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+                <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <!-- <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Form Validation</li>
+                            </ol> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+            </div>
+            <!-- /# row -->
+            <section id="main-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-validation">
+                                  <form class="form-valide" action="{% url 'addVisit' %}" method="post" enctype="multipart/form-data" >
+                                        {% csrf_token %}
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="employee_name">Employee Name <span class="text-danger">*</span></label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" placeholder="Enter the name" name="employee_name" id="employee_name" type="text" value="">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="site_details">Site Details<span class="text-danger">*</span></label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="site_details" name="site_details" placeholder="BHK No and Society name and Area" >
+                                            </div>
+                                        </div>
+        
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="visit_date">Visit date<span class="text-danger">*</span></label>
+                                            <div class="col-lg-6">
+                                                <input type="date" class="form-control" id="visit_date" name="visit_date">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="remarks">Remarks<span class="text-danger">*</span></label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="remarks" name="remarks" placeholder="Comments">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label"><a data-toggle="modal" data-target="#modal-terms" href="#">Terms &amp; Conditions</a> <span class="text-danger">*</span></label>
+                                            <div class="col-lg-8">
+                                                <label class="css-control css-control-primary css-checkbox" for="terms">
+                                                    <input type="checkbox" class="css-control-input" id="terms" name="terms" value="1">
+                                                    <span class="css-control-indicator"></span> I agree to the terms
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-8 ml-auto">
+                                                <button type="submit" class="btn btn-primary">Add FollowUp</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer">
+                            <p>2018 © Admin Board. - <a href="#">example.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
  <!-- jquery vendor -->
  <script src="{% static 'JS/js/lib/jquery.min.js' %}"></script>
  <script src="{% static 'JS/js/lib/jquery.nanoscroller.min.js' %}"></script>

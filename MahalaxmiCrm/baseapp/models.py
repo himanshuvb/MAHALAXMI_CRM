@@ -117,7 +117,21 @@ class NewLead_Telecaller(models.Model):
     interested_property = models.CharField(max_length=200, choices = (("Villa","Villa"),("1 BHK","1 BHK"),("2 BHK","2 BHK"),("3 BHK","3 BHK"),("Commercial","Commercial")))
     budget = models.IntegerField(default = 0)
     next_followup = models.DateField()
-    
+
+
+class FollowUps_Telecaller(models.Model):
+    name = models.CharField(max_length= 200)
+    phone_no = models.CharField(max_length = 200, unique=True)
+    followUp_By = models.CharField(max_length = 200)
+    followUp_date = models.DateField()
+    remarks = models.CharField(max_length=300)
+
+class Visit_Telecaller(models.Model):
+    employee_name = models.CharField(max_length = 200)
+    site_details = models.CharField(max_length = 500)
+    visit_date = models.DateField()
+    remarks = models.CharField(max_length=300)
+
 #SalesPerson
 
 class Booking(models.Model):
