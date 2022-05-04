@@ -21,7 +21,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request,user)
-                    return redirect('dashboard') 
+                    return redirect('dashboard_admin') 
                 else:
                     return render(request, "baseapp/page-login.html", context={"error": "User is not active"})
             else:
