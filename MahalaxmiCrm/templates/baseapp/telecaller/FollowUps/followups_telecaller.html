@@ -40,34 +40,33 @@
             <div class="logo"><a href="#">
                 <!-- <img src="assets/images/logo.png" alt="" /> --><span>Mahalaxmi Real Estate</span>
               </a></div>
-            <ul>
-    
-              </li>
-    
-              <li><a class="sidebar-sub-toggle" href="#"><i class="ti-home"></i>Dashboard</a>
-              </li>
-              <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Leads<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                <ul>
-                  <li><a href="#">Add Lead</a></li>
-                  <li><a href="#">Lead List</a></li>
-                </ul>
-              </li>
-              <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>FollowUps<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                <ul>
-                  <li><a href="#">Add FollowUp</a></li>
-                  <li><a href="#">FollowUps List</a></li>
-                </ul>
-              </li>
-              <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Visit<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                <ul>
-                  <li><a href="#">Add Visit</a></li>
-                  <li><a href="#">Visit List</a></li>
-                </ul>
-              </li>
+              <ul>
     
     
-    
-            </ul>
+                <li><a href="{% url 'dashboard_telecaller' %}"><i class="ti-home"></i>Dashboard</a>
+                </li>
+                <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Leads<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                  <ul>
+                    <li><a href="{% url 'NewLead_telecaller' %}">Add Lead</a></li>
+                    <li><a href="{% url 'ListLead_telecaller' %}">Lead List</a></li>
+                  </ul>
+                </li>
+                <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>FollowUps<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                  <ul>
+                    <li><a href="{% url 'addFollowUps' %}">Add FollowUp</a></li>
+                    <li><a href="{% url 'followups_telecaller' %}">FollowUps List</a></li>
+                  </ul>
+                </li>
+                <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Visit<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                  <ul>
+                    <li><a href="{% url 'addVisit' %}">Add Visit</a></li>
+                    <li><a href="{% url 'VisitList_telecaller' %}">Visit List</a></li>
+                  </ul>
+                </li>
+      
+      
+      
+              </ul>
           </div>
         </div>
       </div>

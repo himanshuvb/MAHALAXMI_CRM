@@ -335,7 +335,8 @@ def delete_salesperson(request,add_salesperson_id):
 
 def FollowUps_salesPerson(request):
     followUps_telecaller = FollowUps_Telecaller.objects.all()
-    return render(request, 'baseapp/telecaller/FollowUps/FollowUps_telecaller.html',context={"followUps_telecaller": followUps_telecaller})
+    return render(request, 'baseapp/salesperson/FollowUps/followUps_salesperson.html',context={"followUps_telecaller": followUps_telecaller})
+
 def OldFollowUps_salesPerson(request):
     return render(request, 'baseapp/salesperson/FollowUps/Old.html')
 
@@ -445,6 +446,9 @@ def followUps_telecaller(request):
 
 #Admin 
 
+def dashboard_admin(request):
+    return render(request, 'baseapp/admin/dashboard_admin.html')
+    
 def add_telecaller(request):
     if(request.method =="GET"):
         return render(request, 'baseapp/admin/add_telecaller.html')

@@ -69,6 +69,7 @@ urlpatterns = [ path("user_login/",views.user_login,name="user_login"),
                path("addFollowUps/", views.addFollowUps , name="addFollowUps"),
                path("followups_telecaller/", views.followUps_telecaller , name = "followups_telecaller"),
                #Admin
+               path("dashboard_admin", views.dashboard_admin , name="dashboard_admin"),
                path("add_telecaller/", views.add_telecaller, name="add_telecaller"),
                path("list_telecaller/", views.list_telecaller, name="list_telecaller"),
                path("add_salesperson/", views.add_salesperson, name="add_salesperson"),

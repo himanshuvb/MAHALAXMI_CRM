@@ -36,111 +36,97 @@
  
     <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
         <div class="nano">
-          <div class="nano-content">
-            <div class="logo"><a href="#">
-                <!-- <img src="assets/images/logo.png" alt="" /> --><span>Mahalaxmi Real Estate</span>
-              </a></div>
-            <ul>
-    
-              </li>
-    
-              <li><a class="sidebar-sub-toggle" href="#"><i class="ti-home"></i>Dashboard</a>
-              </li>
-              <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Leads<span class="sidebar-collapse-icon ti-angle-down"></span></a>
+            <div class="nano-content">
+                <div class="logo"><a href="#"><!-- <img src="assets/images/logo.png" alt="" /> --><span>Mahalaxmi Real Estate</span></a></div>
                 <ul>
-                  <li><a href="#">Add Lead</a></li>
-                  <li><a href="#">Lead List</a></li>
+                    <li class="label"></li>
+                    <br>
+                    <br>
+                    <li><a  href="{% url 'dashboard_salesPerson' %}"><i class="ti-home"></i>Dashboard</a>
+                    </li>
+
+
+                    <li><a href="{% url 'TodaysVisit_salesPerson' %}" ><i class="ti-panel"></i>Today Visit</a></li>
+                    <li><a  href="{% url 'followUps_salesPerson' %}"><i class="ti-home"></i>FollowUps</a>
+                    </li>
+                    <li><a  href=" {% url 'booking_salesPerson' %}"><i class="ti-layout-grid4-alt"></i>Booking</a></li>
+                    <li><a  href="{% url 'TotalBookings_salesPerson' %}"><i class="ti-layout"></i>Total Bookings</a> </li>
+
+                    
+                    
                 </ul>
-              </li>
-              <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>FollowUps<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                <ul>
-                  <li><a href="#">Add FollowUp</a></li>
-                  <li><a href="#">FollowUps List</a></li>
-                </ul>
-              </li>
-              <li><a class="sidebar-sub-toggle"><i class="ti-user"></i>Visit<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                <ul>
-                  <li><a href="#">Add Visit</a></li>
-                  <li><a href="#">Visit List</a></li>
-                </ul>
-              </li>
-    
-    
-    
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- /# sidebar -->
-    
-      <div class="header">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="float-left">
-                <div class="hamburger sidebar-toggle">
-                  <span class="line"></span>
-                  <span class="line"></span>
-                  <span class="line"></span>
-                </div>
-              </div>
-              <div class="float-right">
-    
-    
-    
-                <div class="header-icon">
-                  <a href="index3.html"><i class="ti-home"></i></a>
-                </div>
-    
-    
-    
-    
-                <div class="dropdown dib">
-                  <div class="header-icon" data-toggle="dropdown">
-                    <span class="user-avatar">User_name
-                      <i class="ti-angle-down f-s-10"></i>
-                    </span>
-                    <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
-                      <div class="dropdown-content-body">
-                        <ul>
-                          <li>
-                            <a href="#">
-                              <i class="ti-user"></i>
-                              <span>Profile</span>
-                            </a>
-                          </li>
-    
-                          <li>
-                            <a href="#">
-                              <i class="ti-email"></i>
-                              <span>Inbox</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <i class="ti-settings"></i>
-                              <span>Setting</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="page-login.html">
-                              <i class="ti-power-off"></i>
-                              <span>Logout</span>
-                            </a>
-                          </li>
-                        </ul>
-    
-                      </div>
-                    </div>
-                  </div>
-    
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-    
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        
+                        
+                        
+                            <div class="header-icon">
+                                <a href="{% url 'home' %}"><i class="ti-home"></i></a>
+                            </div>    
+                    
+
+
+
+                        <div class="dropdown dib">
+                            <div class="header-icon" data-toggle="dropdown">
+                                <span class="user-avatar">User_name 
+                                    <i class="ti-angle-down f-s-10"></i>
+                                </span>
+                                <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-user"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-email"></i>
+                                                    <span>Inbox</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="ti-settings"></i>
+                                                    <span>Setting</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'user_login' %}">
+                                                    <i class="ti-power-off"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
  <div class="content-wrap">
     <div class="main">
       <div class="container-fluid">

@@ -47,14 +47,7 @@
 
 
                     <li><a href="{% url 'TodaysVisit_salesPerson' %}" ><i class="ti-panel"></i>Today Visit</a></li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i>Follow Ups<span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            
-                            <li><a href="{% url 'UpcomingFollowUps_salesPerson' %}">Up-Coming Follow-up's</a></li>
-                            <li><a href="{% url 'TodaysFollowUps_salesPerson' %}">Today's Follow-up's</a></li>
-                            <li><a href="{% url 'OldFollowUps_salesPerson' %}">Old Pending Follow-up's</a></li>
-                            
-                        </ul>
+                    <li><a  href="{% url 'followUps_salesPerson' %}"><i class="ti-home"></i>FollowUps</a>
                     </li>
                     <li><a  href=" {% url 'booking_salesPerson' %}"><i class="ti-layout-grid4-alt"></i>Booking</a></li>
                     <li><a  href="{% url 'TotalBookings_salesPerson' %}"><i class="ti-layout"></i>Total Bookings</a> </li>
